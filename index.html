@@ -15,20 +15,33 @@
         <p class="subtitulo-principal"> Entenda seu código. Teste seu conhecimento. Salve seu aprendizado. </p>
     </header>
 
-    <main>
-        <!-- FASE 1: As seções do fluxo serão construídas aqui:
-             1. Abrir Bloco
-             2. Anexar Código
-             3. Análise da IA
-             4. Quiz
-             5. Resultado / Salvar Bloco
-        -->
-    </main>
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal"> <!-- Etapa 1: Abrir Bloco -->
+        <section id="abrir-bloco" class="etapa">
+            <h2 class="titulo-etapa">Abrir Bloco</h2>
+            <p class="descricao-etapa"> Informe o que você está estudando para iniciar um novo bloco. </p>
+            <form id="formulario-bloco" class="formulario">
+                <div class="campo-formulario"> <label for="titulo-trecho"> Qual trecho você está trabalhando? </label>
+                    <input type="text" id="titulo-trecho" name="titulo-trecho"
+                        placeholder="Ex: Eventos de clique no JavaScript" required> </div>
+                <div class="campo-formulario"> <label for="linguagem"> Qual linguagem você está trabalhando? </label>
+                    <select id="linguagem" name="linguagem" required>
+                        <option value="">Selecione uma linguagem</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="react">React</option>
+                        <option value="outra">Outra</option>
+                    </select> </div>
+                <div class="grupo-botoes"> <button type="button" id="continuar-btn" class="botao-principal"> Continuar
+                    </button> </div>
+            </form>
+        </section>
 
-    <script src="./js/storage.js"></script>
-    <script src="./js/api.js"></script>
-    <script src="./js/quiz.js"></script>
-    <script src="./js/app.js"></script>
+        <script src="./js/storage.js"></script>
+        <script src="./js/api.js"></script>
+        <script src="./js/quiz.js"></script>
+        <script src="./js/app.js"></script>
 </body>
 
 </html>
