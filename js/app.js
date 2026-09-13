@@ -20,7 +20,7 @@ const analisarBtn = document.getElementById("analisar-btn");
 // Elementos da análise — Seleção - selecionar botões de navegação e geração do quiz
 const voltarCodigoBtn = document.getElementById("voltar-codigo-btn");
 const gerarQuizBtn = document.getElementById("gerar-quiz-btn");
-
+const voltarPaginabtn = document.getElementById("voltar-pagina-btn");
 // Elementos do quiz — Seleção - selecionar progresso e controles de navegação das perguntas
 const progressoQuiz = document.getElementById("progresso-quiz");
 const perguntaAnteriorBtn = document.getElementById("pergunta-anterior-btn");
