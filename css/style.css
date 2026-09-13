@@ -268,7 +268,8 @@ body {
 }
 
 .botao-principal,
-.botao-secundario {
+.botao-secundario
+.botao-terciario {
     min-width: 120px;
 
     padding: 12px 20px;
@@ -312,10 +313,21 @@ body {
 
 .botao-secundario:hover {
     background-color: var(--cor-card);
-
     border-color: #414755;
 }
 
+.botao-terciario {
+    background-color: transparent;
+    color: #c9e708;
+    border: 1px solid transparent;
+}
+
+.botao-terciario:hover {
+    color: var(--cor-texto);
+    background-color: var(--cor-card);
+    border-color: var(--cor-borda);
+    transform: translateY(-1px);
+}
 
 /* ================================
    CARDS
