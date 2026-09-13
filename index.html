@@ -89,7 +89,7 @@
 <section id="quiz" class="etapa">
     <h2 class="titulo-etapa">Quiz</h2>
     <p id="progresso-quiz" class="progresso-quiz"> Pergunta 1 de 20 </p>
-    
+
     <article class="card quiz-card">
         <h3 id="pergunta-quiz"> Qual é a responsabilidade do addEventListener no JavaScript? </h3>
         <div id="alternativas-quiz" class="lista-alternativas"> <label class="alternativa-quiz"> <input type="radio"
@@ -103,6 +103,29 @@
     <div class="grupo-botoes"> <button type="button" id="pergunta-anterior-btn" class="botao-secundario"> Anterior
         </button> <button type="button" id="avancar-pergunta-btn" class="botao-principal"> Avançar </button> </div>
 </section>
+
+<!-- Etapa 5: Finalização -->
+<section id="finalizacao" class="etapa">
+    <h2 class="titulo-etapa">Bloco Concluído</h2>
+    <p class="descricao-etapa"> Seu bloco de estudo foi concluído. </p>
+
+    <article id="resultado-quiz" class="card">
+        <h3>Resultado do Quiz</h3>
+        <p> Você acertou <strong id="quantidade-acertos">0</strong> de <strong id="total-perguntas">20</strong>
+            perguntas. </p>
+    </article>
+
+    <article id="resumo-final" class="card">
+        <h3>Resumo do Bloco</h3>
+        <p> O resumo final do conteúdo estudado será apresentado aqui. </p>
+    </article>
+
+    <div class="grupo-botoes"> <button type="button" id="salvar-bloco-btn" class="botao-principal"> Salvar Bloco
+        </button> <button type="button" id="salvar-pdf-btn" class="botao-secundario"> Salvar resumo em PDF </button>
+    </div>
+
+</section>
+</main>
 
         <script src="./js/storage.js"></script>
         <script src="./js/api.js"></script>
