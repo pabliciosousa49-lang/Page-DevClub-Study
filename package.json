@@ -1,0 +1,26 @@
+{
+  "name": "code-study",
+  "version": "1.0.0",
+  "description": "Aplicação de estudo para ajudar alunos a compreender trechos de código por meio de análise com IA e quiz.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabliciosousa49-lang/Page-DevClub-Study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pabliciosousa49-lang/Page-DevClub-Study/issues"
+  },
+  "homepage": "https://github.com/pabliciosousa49-lang/Page-DevClub-Study#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
