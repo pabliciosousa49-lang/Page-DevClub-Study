@@ -18,13 +18,18 @@
     <!-- Conteúdo principal -->
     <main class="conteudo-principal"> <!-- Etapa 1: Abrir Bloco -->
         <section id="abrir-bloco" class="etapa">
+
             <h2 class="titulo-etapa">Abrir Bloco</h2>
             <p class="descricao-etapa"> Informe o que você está estudando para iniciar um novo bloco. </p>
             <form id="formulario-bloco" class="formulario">
+
                 <div class="campo-formulario"> <label for="titulo-trecho"> Qual trecho você está trabalhando? </label>
                     <input type="text" id="titulo-trecho" name="titulo-trecho"
-                        placeholder="Ex: Eventos de clique no JavaScript" required> </div>
+                        placeholder="Ex: Eventos de clique no JavaScript" required>
+                </div>
+
                 <div class="campo-formulario"> <label for="linguagem"> Qual linguagem você está trabalhando? </label>
+
                     <select id="linguagem" name="linguagem" required>
                         <option value="">Selecione uma linguagem</option>
                         <option value="html">HTML</option>
@@ -32,10 +37,28 @@
                         <option value="javascript">JavaScript</option>
                         <option value="react">React</option>
                         <option value="outra">Outra</option>
-                    </select> </div>
-                <div class="grupo-botoes"> <button type="button" id="continuar-btn" class="botao-principal"> Continuar
-                    </button> </div>
-            </form>
+                    </select>
+
+                </div>
+                
+                <div class="grupo-botoes"> <button type="button" id="continuar-btn" class="botao-principal"> Continuar </button> </div>
+                </form>
+        </section>
+
+        <!-- Etapa 2: Inserir Código -->
+        <section id="inserir-codigo" class="etapa">
+            <h2 class="titulo-etapa">Inserir Código</h2>
+
+            <div class="informacoes-bloco">
+                <p> <strong>Trecho:</strong> <span id="titulo-trecho-exibicao"> Eventos de clique no JavaScript </span> </p>
+                <p> <strong>Linguagem:</strong> <span id="linguagem-exibicao"> JavaScript </span> </p>
+            </div>
+
+            <div class="campo-formulario"> <label for="codigo-input"> Cole seu trecho de código: </label> <textarea
+                    id="codigo-input" name="codigo" rows="15" placeholder="Cole seu código aqui..."></textarea> </div>
+            <div class="grupo-botoes"> <button type="button" id="voltar-inicio-btn" class="botao-secundario"> Voltar </button>
+
+            <button type="button" id="analisar-btn" class="botao-principal"> Analisar </button> </div>
         </section>
 
         <script src="./js/storage.js"></script>
