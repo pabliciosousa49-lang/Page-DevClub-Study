@@ -94,3 +94,45 @@ continuarBtn.addEventListener("click", function () {
 
     mostrarEtapa(inserirCodigo);
 });
+
+// Voltar ao início — Escuta
+
+voltarInicioBtn.addEventListener("click", function () {
+    mostrarEtapa(abrirBloco);
+});
+
+// Analisar código — Escuta
+
+analisarBtn.addEventListener("click", function () {
+
+    // Código informado — Processamento
+
+    const codigo = codigoInput.value.trim();
+
+    // Validação do código — Condição
+
+    if (codigo === "") {
+        alert("Cole um trecho de código antes de analisar.");
+        codigoInput.focus();
+        return;
+    }
+
+    // A chamada para a API será adicionada na fase de integração.
+
+    mostrarEtapa(analiseIa);
+});
+
+// Voltar ao código — Escuta
+
+voltarCodigoBtn.addEventListener("click", function () {
+    mostrarEtapa(inserirCodigo);
+});
+
+// Gerar quiz — Escuta
+
+gerarQuizBtn.addEventListener("click", function () {
+
+    // As perguntas serão carregadas pela IA posteriormente.
+
+    mostrarEtapa(quiz);
+});
