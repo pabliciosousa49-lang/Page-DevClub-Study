@@ -1,1 +1,568 @@
-/* FASE 2 — Estilos da aplicação serão desenvolvidos aqui. */
+
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-fundo: #090b10;
+    --cor-superficie: #11141b;
+    --cor-card: #171b24;
+    --cor-borda: #292e3a;
+
+    --cor-principal: #7c5cff;
+    --cor-principal-hover: #927aff;
+
+    --cor-texto: #f5f5f7;
+    --cor-texto-secundario: #a5a8b3;
+
+    --cor-sucesso: #36d399;
+    --cor-erro: #ff5c6c;
+
+    --raio-pequeno: 6px;
+    --raio-medio: 10px;
+    --raio-grande: 16px;
+
+    --largura-conteudo: 900px;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(124, 92, 255, 0.10),
+            transparent 35%
+        ),
+        var(--cor-fundo);
+
+    color: var(--cor-texto);
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* ================================
+   CABEÇALHO
+================================ */
+
+.cabecalho {
+    width: 100%;
+
+    padding: 48px 24px 32px;
+
+    text-align: center;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.titulo-principal {
+    margin-bottom: 8px;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+.titulo-principal::before {
+    content: "< ";
+    color: var(--cor-principal);
+}
+
+.titulo-principal::after {
+    content: " />";
+    color: var(--cor-principal);
+}
+
+.subtitulo-principal {
+    color: var(--cor-texto-secundario);
+
+    font-size: 1rem;
+}
+
+
+/* ================================
+   CONTEÚDO PRINCIPAL
+================================ */
+
+.conteudo-principal {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+
+    margin: 0 auto;
+
+    padding: 48px 24px 80px;
+}
+
+
+/* ================================
+   ETAPAS
+================================ */
+
+.etapa {
+    width: 100%;
+
+    padding: 32px;
+
+    background-color: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-grande);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.etapa + .etapa {
+    margin-top: 32px;
+}
+
+.titulo-etapa {
+    margin-bottom: 8px;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.descricao-etapa {
+    margin-bottom: 28px;
+
+    color: var(--cor-texto-secundario);
+}
+
+
+/* ================================
+   FORMULÁRIOS
+================================ */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.campo-formulario label {
+    color: var(--cor-texto);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    background-color: var(--cor-fundo);
+
+    color: var(--cor-texto);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.campo-formulario input::placeholder,
+.campo-formulario textarea::placeholder {
+    color: #686d79;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    border-color: var(--cor-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+
+/* ================================
+   ÁREA DE CÓDIGO
+================================ */
+
+#codigo-input {
+    min-height: 320px;
+
+    resize: vertical;
+
+    background-color: #080a0e;
+
+    font-family:
+        "Courier New",
+        Consolas,
+        monospace;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    tab-size: 4;
+}
+
+.informacoes-bloco {
+    display: flex;
+
+    gap: 24px;
+
+    margin-bottom: 24px;
+    padding: 16px;
+
+    background-color: var(--cor-card);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+}
+
+.informacoes-bloco p {
+    color: var(--cor-texto-secundario);
+}
+
+.informacoes-bloco strong {
+    color: var(--cor-texto);
+}
+
+
+/* ================================
+   BOTÕES
+================================ */
+
+.grupo-botoes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.botao-principal,
+.botao-secundario {
+    min-width: 120px;
+
+    padding: 12px 20px;
+
+    border-radius: var(--raio-medio);
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.botao-principal {
+    background-color: var(--cor-principal);
+
+    color: #ffffff;
+
+    border: 1px solid var(--cor-principal);
+}
+
+.botao-principal:hover {
+    background-color: var(--cor-principal-hover);
+    border-color: var(--cor-principal-hover);
+
+    transform: translateY(-1px);
+}
+
+.botao-secundario {
+    background-color: transparent;
+
+    color: var(--cor-texto);
+
+    border: 1px solid var(--cor-borda);
+}
+
+.botao-secundario:hover {
+    background-color: var(--cor-card);
+
+    border-color: #414755;
+}
+
+
+/* ================================
+   CARDS
+================================ */
+
+.card {
+    padding: 24px;
+
+    background-color: var(--cor-card);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+}
+
+.card + .card {
+    margin-top: 16px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--cor-texto-secundario);
+}
+
+
+/* ================================
+   ANÁLISE DA IA
+================================ */
+
+#resumo-ia {
+    border-left: 3px solid var(--cor-principal);
+}
+
+#explicacao-ia {
+    border-left: 3px solid #4c9aff;
+}
+
+#fluxo-codigo {
+    border-left: 3px solid var(--cor-sucesso);
+}
+
+
+/* ================================
+   QUIZ
+================================ */
+
+.progresso-quiz {
+    margin-bottom: 16px;
+
+    color: var(--cor-principal);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.quiz-card {
+    padding: 28px;
+}
+
+#pergunta-quiz {
+    margin-bottom: 24px;
+
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.lista-alternativas {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.alternativa-quiz {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    background-color: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.alternativa-quiz:hover {
+    background-color: #1c202a;
+
+    border-color: var(--cor-principal);
+}
+
+.alternativa-quiz input {
+    accent-color: var(--cor-principal);
+
+    cursor: pointer;
+}
+
+.alternativa-quiz:has(input:checked) {
+    background-color: rgba(124, 92, 255, 0.10);
+
+    border-color: var(--cor-principal);
+}
+
+
+/* ================================
+   FINALIZAÇÃO
+================================ */
+
+#resultado-quiz {
+    text-align: center;
+
+    border-top: 3px solid var(--cor-sucesso);
+}
+
+#quantidade-acertos {
+    color: var(--cor-sucesso);
+
+    font-size: 1.5rem;
+}
+
+#total-perguntas {
+    color: var(--cor-texto);
+}
+
+#resumo-final {
+    margin-top: 16px;
+}
+
+
+/* ================================
+   SELEÇÃO DE TEXTO
+================================ */
+
+::selection {
+    background-color: var(--cor-principal);
+
+    color: #ffffff;
+}
+
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 768px) {
+
+    .cabecalho {
+        padding: 36px 20px 28px;
+    }
+
+    .titulo-principal {
+        font-size: 2rem;
+    }
+
+    .conteudo-principal {
+        padding:
+            32px
+            16px
+            60px;
+    }
+
+    .etapa {
+        padding: 24px;
+    }
+
+    .informacoes-bloco {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .grupo-botoes {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .botao-principal,
+    .botao-secundario {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .cabecalho {
+        padding:
+            28px
+            16px
+            24px;
+    }
+
+    .titulo-principal {
+        font-size: 1.7rem;
+    }
+
+    .subtitulo-principal {
+        font-size: 0.9rem;
+    }
+
+    .conteudo-principal {
+        padding:
+            24px
+            12px
+            48px;
+    }
+
+    .etapa {
+        padding: 20px;
+
+        border-radius: var(--raio-medio);
+    }
+
+    .titulo-etapa {
+        font-size: 1.35rem;
+    }
+
+    #codigo-input {
+        min-height: 260px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .quiz-card {
+        padding: 20px;
+    }
+
+    .alternativa-quiz {
+        padding: 14px;
+    }
+
+}
+
