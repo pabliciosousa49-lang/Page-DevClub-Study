@@ -214,3 +214,25 @@ avancarPerguntaBtn.addEventListener("click", function () {
 
     mostrarEtapa(finalizacao);
 });
+
+    // Salvar bloco — Escuta
+
+salvarBlocoBtn.addEventListener("click", function () {
+
+    // O LocalStorage será implementado na fase de persistência.
+
+    alert("O salvamento do bloco será implementado na próxima fase.");
+});
+
+// Exportar PDF — Escuta
+
+salvarPdfBtn.addEventListener("click", function () {
+
+    // A geração do PDF será implementada posteriormente.
+
+    alert("A geração do PDF será implementada posteriormente.");
+});
+
+// Inicialização — Atualização
+
+atualizarProgressoQuiz();
