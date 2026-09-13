@@ -36,6 +36,17 @@ const avancarPerguntaBtn = document.getElementById("avancar-pergunta-btn");
 const salvarBlocoBtn = document.getElementById("salvar-bloco-btn");
 const salvarPdfBtn = document.getElementById("salvar-pdf-btn");
 
+// Dados do bloco — Processamento- estrutura de dados de bloco de estudo
+
+const bloco = {
+    titulo: "",
+    linguagem: "",
+    codigo: "",
+    analise: null,
+    quiz: [],
+    respostas: []
+};
+
 // Controle de etapas — Atualização
 
 function mostrarEtapa(etapaSelecionada) {
@@ -236,3 +247,4 @@ salvarPdfBtn.addEventListener("click", function () {
 // Inicialização — Atualização
 
 atualizarProgressoQuiz();
+
