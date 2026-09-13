@@ -131,7 +131,9 @@ analisarBtn.addEventListener("click", function () {
         codigoInput.focus();
         return;
     }
-
+    // Código do bloco — Atualização - armazenar código informado pelo aluno
+    bloco.codigo = codigo;
+    
     // A chamada para a API será adicionada na fase de integração.
 
     mostrarEtapa(analiseIa);
