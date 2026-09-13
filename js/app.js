@@ -136,3 +136,81 @@ gerarQuizBtn.addEventListener("click", function () {
 
     mostrarEtapa(quiz);
 });
+
+// Estado do quiz — Observação
+
+let perguntaAtual = 1;
+const totalPerguntas = 20;
+
+// Progresso do quiz — Atualização
+
+function atualizarProgressoQuiz() {
+    progressoQuiz.textContent =
+        `Pergunta ${perguntaAtual} de ${totalPerguntas}`;
+
+    perguntaAnteriorBtn.disabled = perguntaAtual === 1;
+
+    // Última pergunta — Condição
+
+    if (perguntaAtual === totalPerguntas) {
+        avancarPerguntaBtn.textContent = "Finalizar Quiz";
+    } else {
+        avancarPerguntaBtn.textContent = "Avançar";
+    }
+}
+
+// Pergunta anterior — Escuta
+
+perguntaAnteriorBtn.addEventListener("click", function () {
+
+    // Limite inicial — Condição
+
+    if (perguntaAtual > 1) {
+
+        // Navegação do quiz — Processamento
+
+        perguntaAtual--;
+
+        // Interface do quiz — Atualização
+
+        atualizarProgressoQuiz();
+    }
+});
+
+// Próxima pergunta — Escuta
+
+avancarPerguntaBtn.addEventListener("click", function () {
+
+    // Resposta selecionada — Seleção
+
+    const respostaSelecionada = document.querySelector(
+        'input[name="resposta-quiz"]:checked'
+    );
+
+    // Resposta obrigatória — Condição
+
+    if (!respostaSelecionada) {
+        alert("Selecione uma alternativa para continuar.");
+        return;
+    }
+
+    // Existem perguntas restantes? — Condição
+
+    if (perguntaAtual < totalPerguntas) {
+
+        // Avançar pergunta — Processamento
+
+        perguntaAtual++;
+
+        // Interface do quiz — Atualização
+
+        atualizarProgressoQuiz();
+        respostaSelecionada.checked = false;
+
+        return;
+    }
+
+    // Finalização — Atualização
+
+    mostrarEtapa(finalizacao);
+});
