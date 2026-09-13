@@ -36,7 +36,7 @@ const avancarPerguntaBtn = document.getElementById("avancar-pergunta-btn");
 const salvarBlocoBtn = document.getElementById("salvar-bloco-btn");
 const salvarPdfBtn = document.getElementById("salvar-pdf-btn");
 
-// Dados do bloco — Processamento- estrutura de dados de bloco de estudo
+// Dados do bloco — Processamento- estrutura de dados- bloco de estudo
 
 const bloco = {
     titulo: "",
@@ -97,6 +97,10 @@ continuarBtn.addEventListener("click", function () {
 
     const linguagemSelecionada =
         linguagemSelect.options[linguagemSelect.selectedIndex].text;
+
+    // Dados iniciais do bloco — Atualização - armazenar título e linguagem do estudo
+    bloco.titulo = tituloTrecho;
+    bloco.linguagem = linguagem;
 
     // Informações do bloco — Atualização
 
