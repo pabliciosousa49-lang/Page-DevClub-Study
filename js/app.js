@@ -35,3 +35,62 @@ const avancarPerguntaBtn = document.getElementById("avancar-pergunta-btn");
 
 const salvarBlocoBtn = document.getElementById("salvar-bloco-btn");
 const salvarPdfBtn = document.getElementById("salvar-pdf-btn");
+
+// Controle de etapas — Atualização
+
+function mostrarEtapa(etapaSelecionada) {
+    abrirBloco.style.display = "none";
+    inserirCodigo.style.display = "none";
+    analiseIa.style.display = "none";
+    quiz.style.display = "none";
+    finalizacao.style.display = "none";
+
+    etapaSelecionada.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// Estado inicial — Atualização
+
+mostrarEtapa(abrirBloco);
+
+// Abrir bloco — Escuta
+
+continuarBtn.addEventListener("click", function () {
+
+    // Dados do formulário — Processamento
+
+    const tituloTrecho = tituloTrechoInput.value.trim();
+    const linguagem = linguagemSelect.value;
+
+    // Validação do título — Condição
+
+    if (tituloTrecho === "") {
+        alert("Informe qual trecho você está trabalhando.");
+        tituloTrechoInput.focus();
+        return;
+    }
+
+    // Validação da linguagem — Condição
+
+    if (linguagem === "") {
+        alert("Selecione uma linguagem.");
+        linguagemSelect.focus();
+        return;
+    }
+
+    // Linguagem selecionada — Processamento
+
+    const linguagemSelecionada =
+        linguagemSelect.options[linguagemSelect.selectedIndex].text;
+
+    // Informações do bloco — Atualização
+
+    tituloTrechoExibicao.textContent = tituloTrecho;
+    linguagemExibicao.textContent = linguagemSelecionada;
+
+    mostrarEtapa(inserirCodigo);
+});
