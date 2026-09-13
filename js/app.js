@@ -21,6 +21,7 @@ const analisarBtn = document.getElementById("analisar-btn");
 const voltarCodigoBtn = document.getElementById("voltar-codigo-btn");
 const gerarQuizBtn = document.getElementById("gerar-quiz-btn");
 const voltarPaginabtn = document.getElementById("voltar-pagina-btn");
+
 // Elementos do quiz — Seleção - selecionar progresso e controles de navegação das perguntas
 const progressoQuiz = document.getElementById("progresso-quiz");
 const perguntaAnteriorBtn = document.getElementById("pergunta-anterior-btn");
@@ -29,6 +30,23 @@ const avancarPerguntaBtn = document.getElementById("avancar-pergunta-btn");
 // Elementos da finalização — Seleção - selecionar controles para salvar o bloco e exportar o PDF
 const salvarBlocoBtn = document.getElementById("salvar-bloco-btn");
 const salvarPdfBtn = document.getElementById("salvar-pdf-btn");
+
+// Voltar página — Escuta - identificar clique no botão
+voltarPaginabtn.addEventListener("click", function () {
+
+    if (quiz.style.display === "block") {
+        mostrarEtapa(analiseIa);
+    }
+
+    else if (analiseIa.style.display === "block") {
+        mostrarEtapa(inserirCodigo);
+    }
+
+    else if (inserirCodigo.style.display === "block") {
+        mostrarEtapa(abrirBloco);
+    }
+
+});
 
 // Dados do bloco — Processamento - estruturar os dados do bloco de estudo
 const bloco = {
