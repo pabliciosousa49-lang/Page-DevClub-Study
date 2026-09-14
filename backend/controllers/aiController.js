@@ -9,3 +9,23 @@ function analisarCodigo(req, res) {
             erro: "Título, linguagem e código são obrigatórios."
         });
     }
+
+// Análise temporária — Processamento - preparar resposta enquanto a integração com IA não estiver implementada
+    const analise = {
+        resumo: `Análise preparada para o trecho "${titulo}".`,
+        explicacao: `O código informado utiliza a linguagem ${linguagem}.`,
+        fluxo: "O fluxo detalhado será gerado pela IA."
+    };
+
+    // Resultado da análise — Atualização - retornar os dados processados para a rota da aplicação
+    return res.status(200).json({
+        titulo,
+        linguagem,
+        analise
+    });
+}
+
+// Exportação do controller — Atualização - disponibilizar função de análise para utilização nas rotas
+module.exports = {
+    analisarCodigo
+};
