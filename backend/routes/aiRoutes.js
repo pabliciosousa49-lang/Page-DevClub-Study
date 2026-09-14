@@ -1,11 +1,14 @@
 // Dependência de rotas — Seleção - importar o recurso responsável pela criação das rotas
 const express = require("express");
 
+// Controller da IA — Seleção - importar função responsável pelo processamento da análise
+const { analisarCodigo } = require("../controllers/aiController");
+
 // Roteador da IA — Processamento - criar o roteador responsável pelas requisições relacionadas à IA
 const router = express.Router();
 
 // Rota de análise — Escuta - receber solicitações para análise de código
-router.post("/analisar", function (req, res) {
+router.post("/analisar", analisarCodigo);
     // Dados recebidos — Seleção - acessar os dados enviados pelo frontend
     const { titulo, linguagem, codigo } = req.body;
 
@@ -23,7 +26,6 @@ router.post("/analisar", function (req, res) {
         linguagem,
         codigo
     });
-});
 
 // Exportação do roteador — Atualização - disponibilizar as rotas da IA para o servidor
 module.exports = router;
