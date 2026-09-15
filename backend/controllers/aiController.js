@@ -1,5 +1,13 @@
+// SDK da IA — Seleção - importar recurso responsável pela comunicação com o Gemini
+const { GoogleGenAI } = require("@google/genai");
+
+// Cliente da IA — Processamento - configurar comunicação com o Gemini utilizando a chave protegida
+const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY
+});
+
 // Análise de código — Processamento - controlar o processamento das solicitações de análise
-function analisarCodigo(req, res) {
+async function analisarCodigo(req, res) {
     // Dados da análise — Seleção - obter título, linguagem e código enviados na requisição
     const { titulo, linguagem, codigo } = req.body;
 
@@ -10,19 +18,58 @@ function analisarCodigo(req, res) {
         });
     }
 
-// Análise temporária — Processamento - preparar resposta enquanto a integração com IA não estiver implementada
-    const analise = {
-        resumo: `Análise preparada para o trecho "${titulo}".`,
-        explicacao: `O código informado utiliza a linguagem ${linguagem}.`,
-        fluxo: "O fluxo detalhado será gerado pela IA."
-    };
+    try {
+        // Prompt da análise — Processamento - estruturar instruções e código que serão enviados para a IA
+        const prompt = `
+Você é um mentor de programação.
 
-    // Resultado da análise — Atualização - retornar os dados processados para a rota da aplicação
-    return res.status(200).json({
-        titulo,
-        linguagem,
-        analise
-    });
+Analise o trecho de código abaixo com foco educacional.
+
+Título do estudo: ${titulo}
+Linguagem: ${linguagem}
+
+Código:
+${codigo}
+
+Explique de forma simples para um estudante de programação.
+
+Retorne a análise utilizando exatamente esta estrutura:
+
+RESUMO:
+Explique resumidamente o objetivo do código.
+
+EXPLICACAO:
+Explique as principais partes e responsabilidades do código.
+
+FLUXO:
+Descreva a sequência de execução do código.
+`;
+
+        // Requisição ao Gemini — Processamento - enviar o código e aguardar a análise gerada pela IA
+        const resposta = await ai.interactions.create({
+            model: "gemini-3.6-flash",
+            input: prompt
+        });
+
+        // Conteúdo da análise — Seleção - obter o texto retornado pelo Gemini
+        const analise = resposta.output_text;
+
+        // Resultado da análise — Atualização - retornar os dados processados para a rota da aplicação
+        return res.status(200).json({
+            titulo,
+            linguagem,
+            analise
+        });
+
+    } catch (erro) {
+        // Erro da análise — Condição - tratar falhas ocorridas durante a comunicação com a IA
+        console.error("Erro ao analisar código com Gemini:", erro.message);
+
+        // Resposta de erro — Atualização - retornar falha controlada sem expor detalhes internos da aplicação
+        return res.status(500).json({
+            erro: "Não foi possível analisar o código."
+        });
+    }
 }
 
 // Exportação do controller — Atualização - disponibilizar função de análise para utilização nas rotas

@@ -2,6 +2,14 @@
 const express = require("express");
 const cors = require("cors");
 
+// Variáveis de ambiente — Processamento - carregar configurações privadas armazenadas no arquivo .env
+require("dotenv").config({
+    path: require("path").join(__dirname, ".env")
+});
+
+// Rotas da IA — Seleção - importar rotas responsáveis pelas requisições de análise
+const aiRoutes = require("./routes/aiRoutes");
+
 // Aplicação Express — Processamento - criar a aplicação responsável pelo backend
 const app = express();
 
@@ -13,6 +21,9 @@ app.use(cors());
 
 // Leitura de JSON — Processamento - permitir que o servidor interprete dados enviados em JSON
 app.use(express.json());
+
+// Rotas da API — Escuta - direcionar requisições de IA para o roteador responsável
+app.use("/api", aiRoutes);
 
 // Rota de teste — Escuta - responder requisições usadas para verificar o funcionamento da API
 app.get("/", function (req, res) {
