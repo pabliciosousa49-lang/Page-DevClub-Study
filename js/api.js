@@ -22,7 +22,7 @@ async function analisarCodigo(titulo, linguagem, codigo) {
     if (!resposta.ok) {
         throw new Error(dados.erro || "Erro ao analisar o código.");
     }
-    
-    // Retorno da análise — Atualização - disponibilizar os dados recebidos para quem chamou a função
+
+    // Retorno da análise — Atualização - disponibilização os dados recebidos para quem chamou a função
     return dados;
 }
