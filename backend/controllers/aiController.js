@@ -46,13 +46,33 @@ Descreva a sequência de execução do código.
 `;
 
         // Requisição ao Gemini — Processamento - enviar o código e aguardar a análise gerada pela IA
-        const resposta = await ai.interactions.create({
-            model: "gemini-3.6-flash",
-            input: prompt
-        });
+        // Requisição ao Gemini — Processamento - enviar o código e solicitar uma análise estruturada
+const resposta = await ai.interactions.create({
+    model: "gemini-3.6-flash",
+    input: prompt,
+    response_format: {
+        type: "text",
+        mime_type: "application/json",
+        schema: {
+            type: "object",
+            properties: {
+                resumo: {
+                    type: "string"
+                },
+                explicacao: {
+                    type: "string"
+                },
+                fluxo: {
+                    type: "string"
+                }
+            },
+            required: ["resumo", "explicacao", "fluxo"]
+        }
+    }
+});
 
-        // Conteúdo da análise — Seleção - obter o texto retornado pelo Gemini
-        const analise = resposta.output_text;
+        // Conteúdo da análise — Processamento - converter a resposta estruturada do Gemini em um objeto JavaScript
+        const analise = JSON.parse(resposta.output_text);
 
         // Resultado da análise — Atualização - retornar os dados processados para a rota da aplicação
         return res.status(200).json({

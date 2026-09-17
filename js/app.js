@@ -21,6 +21,9 @@ const analisarBtn = document.getElementById("analisar-btn");
 const voltarCodigoBtn = document.getElementById("voltar-codigo-btn");
 const gerarQuizBtn = document.getElementById("gerar-quiz-btn");
 const voltarPaginabtn = document.getElementById("voltar-pagina-btn");
+const resumoIa = document.getElementById("resumo-ia");
+const explicacaoIa = document.getElementById("explicacao-ia");
+const fluxoCodigo = document.getElementById("fluxo-codigo");
 
 // Elementos do quiz — Seleção - selecionar progresso e controles de navegação das perguntas
 const progressoQuiz = document.getElementById("progresso-quiz");
@@ -117,7 +120,7 @@ voltarInicioBtn.addEventListener("click", function () {
 });
 
 // Análise do código — Escuta - iniciar o processo de análise ao clicar no botão analisar
-analisarBtn.addEventListener("click", function () {
+analisarBtn.addEventListener("click", async function () {
     // Código informado — Processamento - obter e preparar o código inserido pelo aluno
     const codigo = codigoInput.value.trim();
 
@@ -131,14 +134,26 @@ analisarBtn.addEventListener("click", function () {
     // Código do bloco — Atualização - armazenar código informado pelo aluno
     bloco.codigo = codigo;
 
-    // Integração com IA — Processamento - enviar o código para análise em uma fase futura
-    mostrarEtapa(analiseIa);
-});
+    // Integração com IA — Processamento - enviar os dados do bloco para análise e aguardar a resposta da API
+    try {
+        const resultado = await analisarCodigo(
+            bloco.titulo,
+            bloco.linguagem,
+            bloco.codigo
+        );
 
-// Retorno ao código — Escuta - retornar para a etapa de inserção do código
-voltarCodigoBtn.addEventListener("click", function () {
-    mostrarEtapa(inserirCodigo);
-});
+        // Etapa da análise — Atualização - exibir a análise após o processamento do código
+        mostrarEtapa(analiseIa);
+    } catch (erro) {
+        // Falha na análise — Condição - tratar erros ocorridos durante a comunicação com a API
+        alert(erro.message);
+    }
+
+
+    // Retorno ao código — Escuta - retornar para a etapa de inserção do código
+    voltarCodigoBtn.addEventListener("click", function () {
+        mostrarEtapa(inserirCodigo);
+    });
 
 // Geração do quiz — Escuta - abrir o quiz após a etapa de análise
 gerarQuizBtn.addEventListener("click", function () {
@@ -216,4 +231,4 @@ salvarPdfBtn.addEventListener("click", function () {
 });
 
 // Inicialização do quiz — Atualização - configurar o estado visual inicial do questionário
-atualizarProgressoQuiz();
+atualizarProgressoQuiz()
