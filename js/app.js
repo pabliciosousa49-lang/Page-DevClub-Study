@@ -142,6 +142,14 @@ analisarBtn.addEventListener("click", async function () {
             bloco.codigo
         );
 
+        // Resultado da análise — Atualização - armazenar no bloco a análise retornada pela IA
+        bloco.analise = resultado.analise;
+
+        // Conteúdo da análise — Atualização - exibir na interface os dados retornados pela IA
+        resumoIa.textContent = bloco.analise.resumo;
+        explicacaoIa.textContent = bloco.analise.explicacao;
+        fluxoCodigo.textContent = bloco.analise.fluxo;
+
         // Etapa da análise — Atualização - exibir a análise após o processamento do código
         mostrarEtapa(analiseIa);
     } catch (erro) {
@@ -149,11 +157,13 @@ analisarBtn.addEventListener("click", async function () {
         alert(erro.message);
     }
 
+});
 
-    // Retorno ao código — Escuta - retornar para a etapa de inserção do código
-    voltarCodigoBtn.addEventListener("click", function () {
-        mostrarEtapa(inserirCodigo);
-    });
+
+// Retorno ao código — Escuta - retornar para a etapa de inserção do código
+voltarCodigoBtn.addEventListener("click", function () {
+    mostrarEtapa(inserirCodigo);
+});
 
 // Geração do quiz — Escuta - abrir o quiz após a etapa de análise
 gerarQuizBtn.addEventListener("click", function () {

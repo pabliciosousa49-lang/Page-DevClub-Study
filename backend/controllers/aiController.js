@@ -43,9 +43,14 @@ Explique as principais partes e responsabilidades do código.
 
 FLUXO:
 Descreva a sequência de execução do código.
+FORMATAÇÃO DA RESPOSTA:
+
+Escreva o conteúdo dos campos resumo, explicacao e fluxo em texto simples.
+Não utilize Markdown, HTML, asteriscos para negrito ou crases para destacar código.
+Não repita os títulos RESUMO, EXPLICACAO e FLUXO dentro do conteúdo dos campos.
+Utilize frases claras e quebras de linha quando necessário.
 `;
 
-        // Requisição ao Gemini — Processamento - enviar o código e aguardar a análise gerada pela IA
         // Requisição ao Gemini — Processamento - enviar o código e solicitar uma análise estruturada
 const resposta = await ai.interactions.create({
     model: "gemini-3.6-flash",
