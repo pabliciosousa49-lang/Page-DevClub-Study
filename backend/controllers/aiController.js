@@ -135,7 +135,52 @@ async function gerarQuiz(req, res) {
         Escreva as perguntas e alternativas em português claro.
         Não utilize Markdown ou HTML no conteúdo das perguntas e alternativas.
 `;
+
+    // Requisição do quiz — Processamento - solicitar ao Gemini perguntas em formato JSON
+    const resposta = await ai.interactions.create({
+        model: "gemini-3.6-flash",
+        input: prompt,
+        response_format: {
+            type: "text",
+            mime_type: "application/json",
+            schema: {
+                type: "object",
+                properties: {
+                    perguntas: {
+                        type: "array",
+                        items: {
+                            type: "object",
+                            properties: {
+                                pergunta: { type: "string" },
+                                alternativas: {
+                                    type: "object",
+                                    properties: {
+                                        a: { type: "string" },
+                                        b: { type: "string" },
+                                        c: { type: "string" },
+                                        d: { type: "string" }
+                                    },
+                                    required: ["a", "b", "c", "d"]
+                                },
+                                respostaCorreta: {
+                                    type: "string",
+                                    enum: ["a", "b", "c", "d"]
+                                }
+                            },
+                            required: [
+                                "pergunta",
+                                "alternativas",
+                                "respostaCorreta"
+                            ]
+                        }
+                    }
+                },
+                required: ["perguntas"]
+            }
+        }
+    });
 }
+
 
 // Exportação do controller — Atualização - disponibilizar a função de análise para utilização nas rotas
 module.exports = {
