@@ -13,5 +13,5 @@ router.post("/analisar", analisarCodigo);
 // Rota do quiz — Escuta - receber solicitações de geração das perguntas
 router.post("/gerar-quiz", gerarQuiz);
 
-// Rota de análise — Escuta - encaminhar solicitações de análise para o controller da IA
+// Exportação das rotas — Atualização - disponibilizar as rotas de análise e geração do quiz
 module.exports = router;
