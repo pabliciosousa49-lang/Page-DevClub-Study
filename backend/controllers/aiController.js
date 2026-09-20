@@ -109,9 +109,36 @@ async function gerarQuiz(req, res) {
             erro: "Título, linguagem, código e análise são obrigatórios."
         });
     }
+
+    // Prompt do quiz — Processamento - definir as instruções para gerar perguntas com base no estudo
+    const prompt = `
+        Você é um mentor de programação.
+
+        Crie um quiz educacional com exatamente 20 perguntas sobre o estudo abaixo.
+
+        Título do estudo: ${titulo}
+        Linguagem: ${linguagem}
+
+        Código:
+        ${codigo}
+
+        Análise do código:
+        Resumo: ${analise.resumo}
+        Explicação: ${analise.explicacao}
+        Fluxo: ${analise.fluxo}
+
+        REGRAS DO QUIZ:
+        Crie perguntas que avaliem a compreensão do código e dos conceitos explicados na análise.
+        Cada pergunta deve conter quatro alternativas identificadas por a, b, c e d.
+        Cada pergunta deve possuir apenas uma alternativa correta.
+        Evite perguntas repetidas.
+        Escreva as perguntas e alternativas em português claro.
+        Não utilize Markdown ou HTML no conteúdo das perguntas e alternativas.
+`;
 }
 
 // Exportação do controller — Atualização - disponibilizar a função de análise para utilização nas rotas
 module.exports = {
-    analisarCodigo
+    analisarCodigo,
+    gerarQuiz
 };
