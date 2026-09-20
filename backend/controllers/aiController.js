@@ -181,6 +181,19 @@ async function gerarQuiz(req, res) {
             }
         });
 
+            // Conteúdo do quiz — Processamento - converter a resposta do Gemini em um objeto JavaScript
+    const quiz = JSON.parse(resposta.output_text);
+
+    // Quantidade de perguntas — Condição - verificar se o quiz contém exatamente 20 perguntas
+    if (!Array.isArray(quiz.perguntas) || quiz.perguntas.length !== 20) {
+        throw new Error("O Gemini não retornou exatamente 20 perguntas.");
+    }
+
+    // Resultado do quiz — Atualização - retornar as perguntas geradas para a aplicação
+    return res.status(200).json({
+        perguntas: quiz.perguntas
+    });
+    
     } catch (erro) {
         // Erro do quiz — Condição - tratar falhas durante a geração das perguntas
         console.error("Erro ao gerar quiz com Gemini:", erro.message);
