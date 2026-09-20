@@ -1,3 +1,4 @@
+
 // SDK da IA — Seleção - importar recurso responsável pela comunicação com o Gemini
 const { GoogleGenAI } = require("@google/genai");
 
@@ -43,8 +44,8 @@ Explique as principais partes e responsabilidades do código.
 
 FLUXO:
 Descreva a sequência de execução do código.
-FORMATAÇÃO DA RESPOSTA:
 
+FORMATAÇÃO DA RESPOSTA:
 Escreva o conteúdo dos campos resumo, explicacao e fluxo em texto simples.
 Não utilize Markdown, HTML, asteriscos para negrito ou crases para destacar código.
 Não repita os títulos RESUMO, EXPLICACAO e FLUXO dentro do conteúdo dos campos.
@@ -52,29 +53,29 @@ Utilize frases claras e quebras de linha quando necessário.
 `;
 
         // Requisição ao Gemini — Processamento - enviar o código e solicitar uma análise estruturada
-const resposta = await ai.interactions.create({
-    model: "gemini-3.6-flash",
-    input: prompt,
-    response_format: {
-        type: "text",
-        mime_type: "application/json",
-        schema: {
-            type: "object",
-            properties: {
-                resumo: {
-                    type: "string"
-                },
-                explicacao: {
-                    type: "string"
-                },
-                fluxo: {
-                    type: "string"
+        const resposta = await ai.interactions.create({
+            model: "gemini-3.6-flash",
+            input: prompt,
+            response_format: {
+                type: "text",
+                mime_type: "application/json",
+                schema: {
+                    type: "object",
+                    properties: {
+                        resumo: {
+                            type: "string"
+                        },
+                        explicacao: {
+                            type: "string"
+                        },
+                        fluxo: {
+                            type: "string"
+                        }
+                    },
+                    required: ["resumo", "explicacao", "fluxo"]
                 }
-            },
-            required: ["resumo", "explicacao", "fluxo"]
-        }
-    }
-});
+            }
+        });
 
         // Conteúdo da análise — Processamento - converter a resposta estruturada do Gemini em um objeto JavaScript
         const analise = JSON.parse(resposta.output_text);
@@ -97,7 +98,20 @@ const resposta = await ai.interactions.create({
     }
 }
 
-// Exportação do controller — Atualização - disponibilizar função de análise para utilização nas rotas
+// Geração do quiz — Processamento - controlar as solicitações de geração das perguntas
+async function gerarQuiz(req, res) {
+    // Dados do estudo — Seleção - obter as informações utilizadas para gerar as perguntas
+    const { titulo, linguagem, codigo, analise } = req.body;
+
+    // Validação dos dados — Condição - impedir a geração do quiz sem as informações necessárias
+    if (!titulo || !linguagem || !codigo || !analise) {
+        return res.status(400).json({
+            erro: "Título, linguagem, código e análise são obrigatórios."
+        });
+    }
+}
+
+// Exportação do controller — Atualização - disponibilizar a função de análise para utilização nas rotas
 module.exports = {
     analisarCodigo
 };
