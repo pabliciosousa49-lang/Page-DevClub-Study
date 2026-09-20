@@ -110,8 +110,9 @@ async function gerarQuiz(req, res) {
         });
     }
 
+    try {
     // Prompt do quiz — Processamento - definir as instruções para gerar perguntas com base no estudo
-    const prompt = `
+        const prompt = `
         Você é um mentor de programação.
 
         Crie um quiz educacional com exatamente 20 perguntas sobre o estudo abaixo.
@@ -136,53 +137,62 @@ async function gerarQuiz(req, res) {
         Não utilize Markdown ou HTML no conteúdo das perguntas e alternativas.
 `;
 
-    // Requisição do quiz — Processamento - solicitar ao Gemini perguntas em formato JSON
-    const resposta = await ai.interactions.create({
-        model: "gemini-3.6-flash",
-        input: prompt,
-        response_format: {
-            type: "text",
-            mime_type: "application/json",
-            schema: {
-                type: "object",
-                properties: {
-                    perguntas: {
-                        type: "array",
-                        items: {
-                            type: "object",
-                            properties: {
-                                pergunta: { type: "string" },
-                                alternativas: {
-                                    type: "object",
-                                    properties: {
-                                        a: { type: "string" },
-                                        b: { type: "string" },
-                                        c: { type: "string" },
-                                        d: { type: "string" }
+            // Requisição do quiz — Processamento - solicitar ao Gemini perguntas em formato JSON
+        const resposta = await ai.interactions.create({
+            model: "gemini-3.6-flash",
+            input: prompt,
+            response_format: {
+                type: "text",
+                mime_type: "application/json",
+                schema: {
+                    type: "object",
+                    properties: {
+                        perguntas: {
+                            type: "array",
+                            items: {
+                                type: "object",
+                                properties: {
+                                    pergunta: { type: "string" },
+                                    alternativas: {
+                                        type: "object",
+                                        properties: {
+                                            a: { type: "string" },
+                                            b: { type: "string" },
+                                            c: { type: "string" },
+                                            d: { type: "string" }
+                                        },
+                                        required: ["a", "b", "c", "d"]
                                     },
-                                    required: ["a", "b", "c", "d"]
+                                    respostaCorreta: {
+                                        type: "string",
+                                        enum: ["a", "b", "c", "d"]
+                                    }
                                 },
-                                respostaCorreta: {
-                                    type: "string",
-                                    enum: ["a", "b", "c", "d"]
-                                }
-                            },
-                            required: [
-                                "pergunta",
-                                "alternativas",
-                                "respostaCorreta"
-                            ]
+                                required: [
+                                    "pergunta",
+                                    "alternativas",
+                                    "respostaCorreta"
+                                ]
+                            }
                         }
-                    }
-                },
-                required: ["perguntas"]
+                    },
+                    required: ["perguntas"]
+                }
             }
-        }
-    });
+        });
+
+    } catch (erro) {
+        // Erro do quiz — Condição - tratar falhas durante a geração das perguntas
+        console.error("Erro ao gerar quiz com Gemini:", erro.message);
+
+        // Resposta de erro — Atualização - retornar falha controlada à aplicação
+        return res.status(500).json({
+            erro: "Não foi possível gerar o quiz."
+        });
+    }
 }
 
-
-// Exportação do controller — Atualização - disponibilizar a função de análise para utilização nas rotas
+// Exportação do controller — Atualização - disponibilizar as funções de análise e geração do quiz para as rotas
 module.exports = {
     analisarCodigo,
     gerarQuiz
