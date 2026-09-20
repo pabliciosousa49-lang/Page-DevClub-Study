@@ -165,10 +165,38 @@ voltarCodigoBtn.addEventListener("click", function () {
     mostrarEtapa(inserirCodigo);
 });
 
-// Geração do quiz — Escuta - abrir o quiz após a etapa de análise
-gerarQuizBtn.addEventListener("click", function () {
-    // Perguntas do quiz — Processamento - carregar perguntas geradas pela IA em uma fase futura
-    mostrarEtapa(quiz);
+// Geração do quiz — Escuta - solicitar perguntas ao clicar no botão
+gerarQuizBtn.addEventListener("click", async function () {
+    // Solicitação do quiz — Processamento - enviar os dados do bloco à API
+    try {
+        gerarQuizBtn.disabled = true;
+
+        const perguntas = await gerarQuiz(
+            bloco.titulo,
+            bloco.linguagem,
+            bloco.codigo,
+            bloco.analise
+        );
+
+        // Validação do quiz — Condição - impedir avanço se a API não retornar 20 perguntas
+        if (!Array.isArray(perguntas) || perguntas.length !== 20) {
+            throw new Error("Não foi possível carregar as 20 perguntas do quiz.");
+        }
+
+        // Perguntas do bloco — Atualização - armazenar as perguntas geradas pela IA
+        bloco.quiz = perguntas;
+
+        // Início do quiz — Atualização - abrir o questionário após carregar as perguntas
+        mostrarEtapa(quiz);
+
+    } catch (erro) {
+        // Falha na geração — Condição - informar quando não for possível carregar o quiz
+        alert(erro.message);
+
+    } finally {
+        // Botão de geração — Atualização - permitir uma nova tentativa após a requisição
+        gerarQuizBtn.disabled = false;
+    }
 });
 
 // Estado do quiz — Processamento - controlar pergunta atual e quantidade total de perguntas
