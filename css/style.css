@@ -457,7 +457,7 @@ img {
     display: flex;
     flex-direction: column;
 
-    width: min(200vw, 400px);
+    width: min(40vw, 500px);
     height: auto;
 
     overflow: hidden;
