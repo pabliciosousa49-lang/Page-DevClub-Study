@@ -1030,15 +1030,28 @@ img {
         grid-row: 2;
     }
 
-    .janela-codestudy {
-        right: 0;
-        bottom: 0;
+    /* Janela flutuante — Atualização - definir dimensões compactas e adaptáveis */
+.janela-codestudy {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
 
-        width: 100vw;
-        height: 100dvh;
+    display: flex;
+    flex-direction: column;
 
-        border-radius: 0;
-    }
+    width: min(480px, calc(100vw - 40px));
+    height: min(620px, calc(100dvh - 40px));
+
+    overflow: hidden;
+
+    background: #19191e;
+    border: 1px solid #5e347d;
+    border-radius: 14px;
+
+    box-shadow: 0 25px 85px rgba(0, 0, 0, 0.7);
+
+    z-index: 1000;
+}
 
     .lista-etapas li {
         font-size: 10px;
@@ -1093,5 +1106,52 @@ img {
     .acoes-aula {
         gap: 0;
     }
+
+    /* Janela responsiva — Atualização - adaptar o painel a telas menores */
+@media (max-width: 600px) {
+    .janela-codestudy {
+        right: 10px;
+        bottom: 10px;
+
+        width: calc(100vw - 20px);
+        height: min(620px, calc(100dvh - 20px));
+    }
+
+    .janela-codestudy .janela-cabecalho {
+        padding: 10px 12px;
+    }
+
+    .janela-codestudy .conteudo-principal {
+        padding: 10px 12px 16px;
+    }
+
+    .janela-codestudy .etapa {
+        padding: 14px;
+    }
+
+    .janela-codestudy .lista-etapas {
+        gap: 3px;
+    }
+
+    .janela-codestudy .lista-etapas li {
+        font-size: 9px;
+        padding: 7px 2px;
+    }
+}
+
+@media (max-width: 380px) {
+    .janela-codestudy .janela-identidade p {
+        display: none;
+    }
+
+    .janela-codestudy .grupo-botoes {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .janela-codestudy .grupo-botoes button {
+        width: 100%;
+    }
+}
 
 }
