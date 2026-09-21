@@ -446,21 +446,23 @@ img {
    JANELA FLUTUANTE DO CODESTUDY
 ================================ */
 
+/* Janela flutuante — Atualização - dimensionar o painel proporcionalmente à tela */
 .janela-codestudy {
     position: fixed;
-    right: 28px;
+
+    top: 24px;
+    right: 24px;
     bottom: 24px;
 
     display: flex;
     flex-direction: column;
 
-    width: min(650px, calc(100vw - 40px));
-    height: min(760px, calc(100dvh - 48px));
+    width: min(200vw, 400px);
+    height: auto;
 
     overflow: hidden;
 
     background: #19191e;
-
     border: 1px solid #5e347d;
     border-radius: 14px;
 
@@ -1031,6 +1033,7 @@ img {
     }
 
     /* Janela flutuante — Atualização - definir dimensões compactas e adaptáveis */
+/* Dimensões da janela — Atualização - tornar o painel de estudos mais compacto */
 .janela-codestudy {
     position: fixed;
     right: 20px;
@@ -1039,8 +1042,8 @@ img {
     display: flex;
     flex-direction: column;
 
-    width: min(480px, calc(100vw - 40px));
-    height: min(620px, calc(100dvh - 40px));
+    width: min(400px, calc(100vw - 40px));
+    height: min(520px, calc(100dvh - 40px));
 
     overflow: hidden;
 
@@ -1114,7 +1117,7 @@ img {
         bottom: 10px;
 
         width: calc(100vw - 20px);
-        height: min(620px, calc(100dvh - 20px));
+        height: min(520px, calc(100dvh - 20px));;
     }
 
     .janela-codestudy .janela-cabecalho {
