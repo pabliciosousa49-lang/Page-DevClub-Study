@@ -513,6 +513,15 @@ img {
     font-weight: 800;
 }
 
+/* Logo do CodeStudy — Atualização - ajustar a imagem ao tamanho do ícone da janela */
+.janela-identidade img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 9px;
+}
+
 .janela-controles {
     display: flex;
     gap: 6px;
