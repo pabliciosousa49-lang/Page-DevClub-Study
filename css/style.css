@@ -1,4 +1,3 @@
-
 /* ================================
    CONFIGURAÇÕES GERAIS
 ================================ */
@@ -10,18 +9,19 @@
 }
 
 :root {
-    --cor-fundo: #090b10;
-    --cor-superficie: #11141b;
-    --cor-card: #171b24;
-    --cor-borda: #292e3a;
+    --cor-fundo: #121212;
+    --cor-superficie: #1b1c1e;
+    --cor-card: #24252a;
+    --cor-borda: #34343b;
 
-    --cor-principal: #7c5cff;
-    --cor-principal-hover: #927aff;
+    --cor-principal: #8238ae;
+    --cor-principal-hover: #9d4fc7;
+    --cor-destaque: #a66ae1;
 
-    --cor-texto: #f5f5f7;
-    --cor-texto-secundario: #a5a8b3;
+    --cor-texto: #f8f8fa;
+    --cor-texto-secundario: #aaaab4;
 
-    --cor-sucesso: #36d399;
+    --cor-sucesso: #39d353;
     --cor-erro: #ff5c6c;
 
     --raio-pequeno: 6px;
@@ -33,69 +33,549 @@
 
 body {
     min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(124, 92, 255, 0.10),
-            transparent 35%
-        ),
-        var(--cor-fundo);
-
+    background: var(--cor-fundo);
     color: var(--cor-texto);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
 
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
 
-    line-height: 1.6;
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+[hidden] {
+    display: none !important;
 }
 
 
 /* ================================
-   CABEÇALHO
+   CABEÇALHO DA PLATAFORMA
 ================================ */
 
-.cabecalho {
-    width: 100%;
+.topo-plataforma {
+    min-height: 96px;
+    padding: 14px 3.5%;
 
-    padding: 48px 24px 32px;
-
-    text-align: center;
-
-    border-bottom: 1px solid var(--cor-borda);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
-.titulo-principal {
-    margin-bottom: 8px;
-
-    font-size: 2.4rem;
-    font-weight: 700;
-
-    letter-spacing: -1px;
+.topo-esquerda,
+.topo-direita,
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-width: 0;
 }
 
-.titulo-principal::before {
-    content: "< ";
-    color: var(--cor-principal);
+.marca {
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 15px;
 }
 
-.titulo-principal::after {
-    content: " />";
-    color: var(--cor-principal);
+.marca img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
 }
 
-.subtitulo-principal {
+.icone-botao {
+    border: 0;
+    background: transparent;
+    color: var(--cor-destaque);
+    font-size: 32px;
+}
+
+.separador {
+    width: 1px;
+    height: 34px;
+    background: var(--cor-borda);
+}
+
+.curso-titulo {
+    min-width: 0;
+}
+
+.curso-titulo h1 {
+    font-size: clamp(15px, 1.4vw, 23px);
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.curso-titulo p {
+    margin-top: 5px;
     color: var(--cor-texto-secundario);
+    font-size: 12px;
+}
 
-    font-size: 1rem;
+.curso-titulo b {
+    color: var(--cor-destaque);
+}
+
+.topo-direita {
+    flex-shrink: 0;
+    gap: 20px;
+}
+
+.progresso-modulo {
+    display: flex;
+    gap: 4px;
+}
+
+.progresso-modulo span {
+    width: 16px;
+    height: 6px;
+    border-radius: 10px;
+    background: #35363a;
+}
+
+.progresso-modulo .feito {
+    background: var(--cor-principal);
+}
+
+.saudacao {
+    color: var(--cor-texto-secundario);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    background: #a7adb7;
+    color: #444444;
+    font-size: 13px;
 }
 
 
 /* ================================
-   CONTEÚDO PRINCIPAL
+   CONTEÚDO DA AULA
+================================ */
+
+.pagina-aula {
+    width: 100%;
+    max-width: 1850px;
+
+    margin: 0 auto;
+    padding: 20px 3.5% 80px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.86fr) minmax(310px, 1fr);
+    gap: 38px;
+}
+
+.coluna-aula {
+    min-width: 0;
+}
+
+
+/* ================================
+   MÍDIA DA AULA
+================================ */
+
+.aula-midia {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+    border-radius: 12px;
+    background: #262630;
+}
+
+.aula-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-aula {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 72px;
+    height: 72px;
+    padding-left: 6px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #7054e9;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.controles-video {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.controles-video button,
+.acoes-aula button:not(.concluir-aula) {
+    padding: 5px 10px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--cor-texto-secundario);
+    font-size: 15px;
+}
+
+.barra-abaixo-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 48px;
+}
+
+.barra-abaixo-video h2 {
+    font-size: 21px;
+}
+
+.acoes-aula {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.concluir-aula {
+    padding: 10px 18px;
+
+    border: 0;
+    border-radius: 25px;
+
+    background: var(--cor-principal);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+/* ================================
+   ANOTAÇÕES DA AULA
+================================ */
+
+.anotacoes-aula {
+    margin-top: 25px;
+    padding: 22px;
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+
+    background: var(--cor-superficie);
+}
+
+.anotacoes-aula h3 {
+    margin-bottom: 8px;
+}
+
+.anotacoes-aula p {
+    margin-bottom: 16px;
+    color: var(--cor-texto-secundario);
+}
+
+.blocos-salvos-aula {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+
+/* ================================
+   PAINEL DE AULAS
+================================ */
+
+.painel-aulas {
+    align-self: start;
+
+    overflow: hidden;
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+
+    background: var(--cor-superficie);
+}
+
+.painel-titulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 23px 25px;
+    background: #222327;
+}
+
+.painel-titulo h2 {
+    font-size: 20px;
+}
+
+.circulo-progresso {
+    display: grid;
+    place-items: center;
+
+    width: 29px;
+    height: 29px;
+
+    border: 3px solid var(--cor-borda);
+    border-radius: 50%;
+
+    color: var(--cor-destaque);
+    font-size: 9px;
+}
+
+.lista-aulas {
+    list-style: none;
+    padding: 20px 25px 30px;
+}
+
+.lista-aulas li {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 53px;
+
+    color: #c0c1ce;
+    font-size: 16px;
+}
+
+.lista-aulas li:not(:last-child)::before {
+    content: "";
+
+    position: absolute;
+    top: 36px;
+    left: 7px;
+
+    width: 1px;
+    height: 32px;
+
+    background: #47474e;
+}
+
+.marcador-aula {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #50515b;
+    border-radius: 50%;
+
+    font-size: 10px;
+}
+
+.aula-concluida .marcador-aula {
+    background: var(--cor-principal);
+    border-color: var(--cor-principal);
+    color: #ffffff;
+}
+
+.lista-aulas .aula-atual {
+    color: #ba7ce7;
+}
+
+.atalho-bloco {
+    margin-left: auto;
+    padding: 5px 8px;
+
+    white-space: nowrap;
+
+    border: 1px solid #7941a6;
+    border-radius: 7px;
+
+    background: #35233f;
+    color: #e5c5ff;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   JANELA FLUTUANTE DO CODESTUDY
+================================ */
+
+.janela-codestudy {
+    position: fixed;
+    right: 28px;
+    bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: min(650px, calc(100vw - 40px));
+    height: min(760px, calc(100dvh - 48px));
+
+    overflow: hidden;
+
+    background: #19191e;
+
+    border: 1px solid #5e347d;
+    border-radius: 14px;
+
+    box-shadow: 0 25px 85px rgba(0, 0, 0, 0.7);
+
+    z-index: 1000;
+}
+
+.janela-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 18px;
+
+    background: #24202b;
+    border-bottom: 1px solid #403349;
+}
+
+.janela-identidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.janela-identidade h2 {
+    font-size: 17px;
+}
+
+.janela-identidade p {
+    color: #b3a9bd;
+    font-size: 12px;
+}
+
+.janela-icone,
+.minimizado-icone {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 9px;
+
+    background: #6e259c;
+    color: var(--cor-sucesso);
+
+    font-weight: 800;
+}
+
+.janela-controles {
+    display: flex;
+    gap: 6px;
+}
+
+.janela-controle {
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: #302c34;
+    color: #dddddd;
+
+    font-size: 23px;
+}
+
+.janela-conteudo {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+
+/* ================================
+   NAVEGAÇÃO DAS ETAPAS
+================================ */
+
+.navegacao-etapas {
+    padding: 16px 18px 0;
+}
+
+.lista-etapas {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+
+    list-style: none;
+}
+
+.lista-etapas li {
+    padding: 7px 3px;
+
+    border-radius: 6px;
+
+    background: #292830;
+    color: #c1b9c6;
+
+    text-align: center;
+    font-size: 11px;
+}
+
+.lista-etapas li:first-child {
+    background: #57316e;
+    color: #ffffff;
+}
+
+
+/* ================================
+   CONTEÚDO DO CODESTUDY
 ================================ */
 
 .conteudo-principal {
@@ -103,44 +583,32 @@ body {
     max-width: var(--largura-conteudo);
 
     margin: 0 auto;
-
-    padding: 48px 24px 80px;
+    padding: 16px 18px 22px;
 }
-
-
-/* ================================
-   ETAPAS
-================================ */
 
 .etapa {
     width: 100%;
+    padding: 20px;
 
-    padding: 32px;
+    background: #202026;
 
-    background-color: var(--cor-superficie);
-
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio-grande);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.25);
+    border: 1px solid #38353d;
+    border-radius: 12px;
 }
 
 .etapa + .etapa {
-    margin-top: 32px;
+    margin-top: 16px;
 }
 
 .titulo-etapa {
-    margin-bottom: 8px;
-
-    font-size: 1.6rem;
-    font-weight: 600;
+    margin-bottom: 7px;
+    font-size: 22px;
 }
 
 .descricao-etapa {
-    margin-bottom: 28px;
-
+    margin-bottom: 20px;
     color: var(--cor-texto-secundario);
+    font-size: 14px;
 }
 
 
@@ -151,20 +619,17 @@ body {
 .formulario {
     display: flex;
     flex-direction: column;
-
-    gap: 24px;
+    gap: 22px;
 }
 
 .campo-formulario {
     display: flex;
     flex-direction: column;
-
     gap: 8px;
 }
 
 .campo-formulario label {
     color: var(--cor-texto);
-
     font-size: 0.95rem;
     font-weight: 500;
 }
@@ -173,18 +638,16 @@ body {
 .campo-formulario select,
 .campo-formulario textarea {
     width: 100%;
+    padding: 13px 15px;
 
-    padding: 14px 16px;
-
-    background-color: var(--cor-fundo);
-
+    background: #15151a;
     color: var(--cor-texto);
 
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-medio);
 
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.95rem;
 
     outline: none;
 
@@ -195,16 +658,19 @@ body {
 
 .campo-formulario input::placeholder,
 .campo-formulario textarea::placeholder {
-    color: #686d79;
+    color: #7d899d;
 }
 
 .campo-formulario input:focus,
 .campo-formulario select:focus,
 .campo-formulario textarea:focus {
     border-color: var(--cor-principal);
+    box-shadow: 0 0 0 3px rgba(130, 56, 174, 0.2);
+}
 
-    box-shadow:
-        0 0 0 3px rgba(124, 92, 255, 0.12);
+.campo-formulario select option {
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
 }
 
 
@@ -213,32 +679,26 @@ body {
 ================================ */
 
 #codigo-input {
-    min-height: 320px;
-
+    min-height: 260px;
     resize: vertical;
 
-    background-color: #080a0e;
+    background: #101015;
 
-    font-family:
-        "Courier New",
-        Consolas,
-        monospace;
-
-    font-size: 0.95rem;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
     line-height: 1.7;
-
     tab-size: 4;
 }
 
 .informacoes-bloco {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
 
-    gap: 24px;
+    margin-bottom: 22px;
+    padding: 15px;
 
-    margin-bottom: 24px;
-    padding: 16px;
-
-    background-color: var(--cor-card);
+    background: var(--cor-card);
 
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-medio);
@@ -254,89 +714,87 @@ body {
 
 
 /* ================================
-   BOTÕES
+   BOTÕES DAS ETAPAS
 ================================ */
 
 .grupo-botoes {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
+    flex-wrap: wrap;
     gap: 12px;
 
-    margin-top: 28px;
+    margin-top: 18px;
 }
 
 .botao-principal,
-.botao-secundario
+.botao-secundario,
 .botao-terciario {
-    min-width: 120px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
-    padding: 12px 20px;
+    min-width: 120px;
+    min-height: 44px;
+    padding: 11px 18px;
 
     border-radius: var(--raio-medio);
 
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-
-    cursor: pointer;
 
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease;
 }
 
 .botao-principal {
-    background-color: var(--cor-principal);
-
+    background: #7933aa;
     color: #ffffff;
-
-    border: 1px solid var(--cor-principal);
+    border: 1px solid #7933aa;
 }
 
-.botao-principal:hover {
-    background-color: var(--cor-principal-hover);
+.botao-principal:hover:not(:disabled) {
+    background: var(--cor-principal-hover);
     border-color: var(--cor-principal-hover);
-
     transform: translateY(-1px);
 }
 
 .botao-secundario {
-    background-color: transparent;
-
+    background: transparent;
     color: var(--cor-texto);
-
     border: 1px solid var(--cor-borda);
 }
 
-.botao-secundario:hover {
-    background-color: var(--cor-card);
-    border-color: #414755;
+.botao-secundario:hover:not(:disabled) {
+    background: var(--cor-card);
+    border-color: #53617a;
 }
 
 .botao-terciario {
-    background-color: transparent;
-    color: #c9e708;
+    background: transparent;
+    color: var(--cor-destaque);
     border: 1px solid transparent;
 }
 
-.botao-terciario:hover {
+.botao-terciario:hover:not(:disabled) {
+    background: var(--cor-card);
     color: var(--cor-texto);
-    background-color: var(--cor-card);
     border-color: var(--cor-borda);
-    transform: translateY(-1px);
 }
+
 
 /* ================================
    CARDS
 ================================ */
 
 .card {
-    padding: 24px;
+    padding: 22px;
 
-    background-color: var(--cor-card);
+    background: #292930;
 
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-medio);
@@ -348,8 +806,7 @@ body {
 
 .card h3 {
     margin-bottom: 12px;
-
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
 }
 
@@ -381,40 +838,35 @@ body {
 
 .progresso-quiz {
     margin-bottom: 16px;
-
-    color: var(--cor-principal);
-
+    color: var(--cor-destaque);
     font-size: 0.9rem;
     font-weight: 600;
 }
 
 .quiz-card {
-    padding: 28px;
+    padding: 24px;
 }
 
 #pergunta-quiz {
-    margin-bottom: 24px;
-
-    font-size: 1.25rem;
+    margin-bottom: 22px;
+    font-size: 1.15rem;
     line-height: 1.5;
 }
 
 .lista-alternativas {
     display: flex;
     flex-direction: column;
-
     gap: 12px;
 }
 
 .alternativa-quiz {
     display: flex;
     align-items: center;
-
     gap: 12px;
 
-    padding: 16px;
+    padding: 14px;
 
-    background-color: var(--cor-superficie);
+    background: #1b1b21;
 
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-medio);
@@ -427,20 +879,18 @@ body {
 }
 
 .alternativa-quiz:hover {
-    background-color: #1c202a;
-
+    background: #34283c;
     border-color: var(--cor-principal);
 }
 
 .alternativa-quiz input {
-    accent-color: var(--cor-principal);
-
+    flex-shrink: 0;
+    accent-color: var(--cor-destaque);
     cursor: pointer;
 }
 
 .alternativa-quiz:has(input:checked) {
-    background-color: rgba(124, 92, 255, 0.10);
-
+    background: #493057;
     border-color: var(--cor-principal);
 }
 
@@ -451,13 +901,11 @@ body {
 
 #resultado-quiz {
     text-align: center;
-
     border-top: 3px solid var(--cor-sucesso);
 }
 
 #quantidade-acertos {
     color: var(--cor-sucesso);
-
     font-size: 1.5rem;
 }
 
@@ -471,13 +919,53 @@ body {
 
 
 /* ================================
-   SELEÇÃO DE TEXTO
+   RODAPÉ DA JANELA
 ================================ */
 
-::selection {
-    background-color: var(--cor-principal);
+.janela-rodape {
+    padding: 0 18px 18px;
+}
 
+
+/* ================================
+   CODESTUDY MINIMIZADO
+================================ */
+
+.codestudy-minimizado {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 1001;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: min(315px, calc(100vw - 24px));
+    padding: 11px 16px;
+
+    background: #25202d;
     color: #ffffff;
+
+    border: 1px solid #8140aa;
+    border-radius: 12px;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.55);
+}
+
+.minimizado-informacoes {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+
+.minimizado-informacoes small {
+    color: #bbbbbb;
+    font-size: 12px;
 }
 
 
@@ -485,96 +973,116 @@ body {
    RESPONSIVIDADE
 ================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
 
-    .cabecalho {
-        padding: 36px 20px 28px;
+    .progresso-modulo {
+        display: none;
     }
 
-    .titulo-principal {
-        font-size: 2rem;
+    .pagina-aula {
+        gap: 20px;
+        grid-template-columns: minmax(0, 1.5fr) minmax(270px, 1fr);
+    }
+
+    .barra-abaixo-video {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 22px;
+    }
+
+}
+
+@media (max-width: 780px) {
+
+    .topo-plataforma {
+        height: auto;
+        padding: 12px;
+    }
+
+    .separador,
+    .saudacao {
+        display: none;
+    }
+
+    .topo-esquerda {
+        gap: 10px;
+    }
+
+    .topo-direita {
+        gap: 8px;
+    }
+
+    .pagina-aula {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .painel-aulas {
+        grid-row: 2;
+    }
+
+    .janela-codestudy {
+        right: 0;
+        bottom: 0;
+
+        width: 100vw;
+        height: 100dvh;
+
+        border-radius: 0;
+    }
+
+    .lista-etapas li {
+        font-size: 10px;
+    }
+
+    .barra-abaixo-video {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .marca strong {
+        display: none;
+    }
+
+    .curso-titulo h1 {
+        font-size: 14px;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .lista-aulas {
+        padding: 12px;
+    }
+
+    .janela-cabecalho {
+        padding: 10px;
     }
 
     .conteudo-principal {
-        padding:
-            32px
-            16px
-            60px;
+        padding: 10px;
     }
 
     .etapa {
-        padding: 24px;
-    }
-
-    .informacoes-bloco {
-        flex-direction: column;
-
-        gap: 8px;
+        padding: 14px;
     }
 
     .grupo-botoes {
         flex-direction: column-reverse;
-
         align-items: stretch;
     }
 
-    .botao-principal,
-    .botao-secundario {
+    .grupo-botoes button {
         width: 100%;
     }
 
-}
-
-
-@media (max-width: 480px) {
-
-    .cabecalho {
-        padding:
-            28px
-            16px
-            24px;
-    }
-
-    .titulo-principal {
-        font-size: 1.7rem;
-    }
-
-    .subtitulo-principal {
-        font-size: 0.9rem;
-    }
-
-    .conteudo-principal {
-        padding:
-            24px
-            12px
-            48px;
-    }
-
-    .etapa {
-        padding: 20px;
-
-        border-radius: var(--raio-medio);
-    }
-
-    .titulo-etapa {
-        font-size: 1.35rem;
-    }
-
-    #codigo-input {
-        min-height: 260px;
-    }
-
-    .card {
-        padding: 18px;
-    }
-
-    .quiz-card {
-        padding: 20px;
-    }
-
-    .alternativa-quiz {
-        padding: 14px;
+    .acoes-aula {
+        gap: 0;
     }
 
 }
-
