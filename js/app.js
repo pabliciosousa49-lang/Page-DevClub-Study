@@ -256,10 +256,32 @@ avancarPerguntaBtn.addEventListener("click", function () {
     mostrarEtapa(finalizacao);
 });
 
-// Salvamento do bloco — Escuta - iniciar o salvamento dos dados do bloco
+// Salvamento do bloco — Escuta - iniciar o registro do estudo concluído
 salvarBlocoBtn.addEventListener("click", function () {
-    // Persistência do bloco — Processamento - salvar os dados no LocalStorage em uma fase futura
-    alert("O salvamento do bloco será implementado na próxima fase.");
+
+    // Validação do estudo — Condição - impedir o salvamento sem os dados essenciais
+    if (
+        !bloco.titulo ||
+        !bloco.linguagem ||
+        !bloco.codigo ||
+        !bloco.analise
+    ) {
+        alert("Preencha e analise o código antes de salvar o bloco.");
+        return;
+    }
+
+    // Persistência do estudo — Processamento - registrar os dados do bloco no navegador
+    try {
+        const blocoSalvo = salvarBloco(bloco);
+
+        // Confirmação do salvamento — Atualização - informar que o estudo foi registrado
+        alert(`Bloco "${blocoSalvo.titulo}" salvo com sucesso!`);
+
+    } catch (erro) {
+        console.error("Erro ao salvar bloco:", erro);
+        alert("Não foi possível salvar o bloco. Tente novamente.");
+    }
+
 });
 
 // Exportação do PDF — Escuta - iniciar a exportação do resumo do bloco
