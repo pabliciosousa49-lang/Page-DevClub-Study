@@ -1,142 +1,497 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeStudy - Bloco de Estudos</title>
+    <title>CodeStudy - Plataforma de Estudos</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header class="cabecalho">
-        <h1 class="titulo-principal">CodeStudy</h1>
-        <p class="subtitulo-principal"> Entenda seu código. Teste seu conhecimento. Salve seu aprendizado. </p>
-    </header>
 
-    <!-- Conteúdo principal -->
-     <div>
-         <button type="button" id="voltar-pagina-btn" class="botao-terciario"> Voltar Página</button>
-     </div>
-     
-    <main class="conteudo-principal"> <!-- Etapa 1: Abrir Bloco -->
-        <section id="abrir-bloco" class="etapa">
+    <!-- Página de ensino — Estrutura - apresentar o ambiente em que o aluno acompanha a aula -->
+    <div class="plataforma-ensino">
 
-            <h2 class="titulo-etapa">Abrir Bloco</h2>
-            <p class="descricao-etapa"> Informe o que você está estudando para iniciar um novo bloco. </p>
-            <form id="formulario-bloco" class="formulario">
+        <!-- Cabeçalho da plataforma — Estrutura - reunir identidade visual e identificação da aula -->
+        <header class="plataforma-cabecalho">
 
-                <div class="campo-formulario"> <label for="titulo-trecho"> Qual trecho você está trabalhando? </label>
-                    <input type="text" id="titulo-trecho" name="titulo-trecho"
-                        placeholder="Ex: Eventos de clique no JavaScript" required>
-                </div>
-
-                <div class="campo-formulario"> <label for="linguagem"> Qual linguagem você está trabalhando? </label>
-
-                    <select id="linguagem" name="linguagem" required>
-                        <option value="">Selecione uma linguagem</option>
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="react">React</option>
-                        <option value="outra">Outra</option>
-                    </select>
-
-                </div>
-                
-                <div class="grupo-botoes"> <button type="button" id="continuar-btn" class="botao-principal"> Continuar </button> </div>
-                </form>
-        </section>
-
-        <!-- Etapa 2: Inserir Código -->
-        <section id="inserir-codigo" class="etapa">
-            <h2 class="titulo-etapa">Inserir Código</h2>
-
-            <div class="informacoes-bloco">
-                <p> <strong>Trecho:</strong> <span id="titulo-trecho-exibicao"> Eventos de clique no JavaScript </span> </p>
-                <p> <strong>Linguagem:</strong> <span id="linguagem-exibicao"> JavaScript </span> </p>
+            <div class="plataforma-identidade">
+                <img
+                    src="./assets/img/logo-plataforma.png"
+                    alt="Logo da plataforma de ensino"
+                    class="plataforma-logo"
+                >
+                <span class="plataforma-nome">Plataforma de Ensino</span>
             </div>
 
-            <div class="campo-formulario"> <label for="codigo-input"> Cole seu trecho de código: </label> <textarea
-                    id="codigo-input" name="codigo" rows="15" placeholder="Cole seu código aqui..."></textarea> </div>
-            <div class="grupo-botoes"> <button type="button" id="voltar-inicio-btn" class="botao-secundario"> Voltar </button>
+            <div class="plataforma-usuario">
+                <span>Área do aluno</span>
+            </div>
 
-            <button type="button" id="analisar-btn" class="botao-principal"> Analisar </button> </div>
-        </section>
-<!-- Etapa 3: Análise da IA -->
-<section id="analise-ia" class="etapa">
-    <h2 class="titulo-etapa">Análise do Código</h2>
-    <p class="descricao-etapa"> Veja o resumo e entenda a responsabilidade do código analisado. </p>
+        </header>
 
-    <article id="resumo-ia" class="card">
-        <h3>Resumo</h3>
-        <p> O resumo gerado pela inteligência artificial será apresentado aqui. </p>
-    </article>
+        <!-- Conteúdo da aula — Estrutura - organizar mídia, informações e lista de aulas -->
+        <main class="plataforma-conteudo">
 
-    <article id="explicacao-ia" class="card">
-        <h3>Explicação</h3>
-        <p> A explicação detalhada sobre o funcionamento do código será apresentada aqui. </p>
-    </article>
+            <section class="aula-conteudo" aria-labelledby="titulo-aula">
 
-    <article id="fluxo-codigo" class="card">
-        <h3>Fluxo e Responsabilidades</h3>
-        <p> As principais responsabilidades e relações encontradas no código serão apresentadas aqui. </p>
-    </article>
+                <div class="aula-cabecalho">
+                    <p class="aula-caminho">Meu curso / Módulo / Aula</p>
 
-    <div class="grupo-botoes"> <button type="button" id="voltar-codigo-btn" class="botao-secundario"> Voltar </button>
-        <button type="button" id="gerar-quiz-btn" class="botao-principal"> Gerar Quiz </button> 
+                    <h1 id="titulo-aula">Aula 4 — Laços de repetição</h1>
+
+                    <p class="aula-descricao">
+                        Acompanhe a aula e utilize o CodeStudy para estudar os trechos de código apresentados.
+                    </p>
+
+                    <!-- Acesso ao CodeStudy — Estrutura - reservar botão para abrir ou restaurar a janela -->
+                    <button
+                        type="button"
+                        id="abrir-codestudy-btn"
+                        class="botao-abrir-codestudy"
+                        aria-controls="janela-codestudy"
+                    >
+                        Abrir CodeStudy
+                    </button>
+                </div>
+
+                <!-- Mídia da aula — Estrutura - reservar espaço para a imagem escolhida pelo aluno -->
+                <div class="aula-midia">
+                    <img
+                        src="./assets/img/midia-aula.jpg"
+                        alt="Imagem ilustrativa da aula"
+                        class="aula-imagem"
+                    >
+                </div>
+
+                <!-- Informações da aula — Estrutura - apresentar descrição e acesso ao bloco salvo -->
+                <section class="aula-informacoes" aria-labelledby="sobre-aula-titulo">
+
+                    <h2 id="sobre-aula-titulo">Sobre esta aula</h2>
+
+                    <p>
+                        Utilize este espaço para apresentar o conteúdo e os objetivos da aula.
+                    </p>
+
+                    <div class="aula-blocos">
+                        <h3>Meus blocos desta aula</h3>
+
+                        <p>
+                            Seus blocos de estudo salvos aparecerão aqui.
+                        </p>
+
+                        <!-- Blocos salvos — Estrutura - reservar local para futuros registros vinculados à aula -->
+                        <div id="blocos-salvos-aula" class="blocos-salvos-aula"></div>
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- Lista de aulas — Estrutura - representar a navegação da plataforma de ensino -->
+            <aside class="plataforma-aulas" aria-labelledby="lista-aulas-titulo">
+
+                <h2 id="lista-aulas-titulo">Aulas do módulo</h2>
+
+                <nav aria-label="Lista de aulas">
+                    <ul class="lista-aulas">
+                        <li><span>Aula 1 — Introdução</span></li>
+                        <li><span>Aula 2 — Conceitos fundamentais</span></li>
+                        <li><span>Aula 3 — Exemplos práticos</span></li>
+
+                        <li class="aula-atual">
+                            <span>Aula 4 — Laços de repetição</span>
+
+                            <!-- Indicador do bloco — Estrutura - reservar acesso aos estudos desta aula -->
+                            <button
+                                type="button"
+                                id="bloco-aula-atual-btn"
+                                class="botao-bloco-aula"
+                                aria-controls="janela-codestudy"
+                            >
+                                Meu bloco
+                            </button>
+                        </li>
+
+                        <li><span>Aula 5 — Exercícios</span></li>
+                    </ul>
+                </nav>
+
+            </aside>
+
+        </main>
+
     </div>
-</section>
 
-<!-- Etapa 4: Quiz -->
-<section id="quiz" class="etapa">
-    <h2 class="titulo-etapa">Quiz</h2>
-    <p id="progresso-quiz" class="progresso-quiz"> Pergunta 1 de 20 </p>
+    <!-- Janela do CodeStudy — Estrutura - reunir o fluxo de estudos em uma interface flutuante -->
+    <aside
+        id="janela-codestudy"
+        class="janela-codestudy"
+        aria-labelledby="janela-codestudy-titulo"
+    >
 
-    <article class="card quiz-card">
-        <h3 id="pergunta-quiz"> Qual é a responsabilidade do addEventListener no JavaScript? </h3>
-        <div id="alternativas-quiz" class="lista-alternativas"> <label class="alternativa-quiz"> <input type="radio"
-                    name="resposta-quiz" value="a"> <span> A) Alterar diretamente o conteúdo do HTML. </span> </label>
-            <label class="alternativa-quiz"> <input type="radio" name="resposta-quiz" value="b"> <span> B) Escutar um
-                    evento que acontece em um elemento. </span> </label> <label class="alternativa-quiz"> <input
-                    type="radio" name="resposta-quiz" value="c"> <span> C) Criar automaticamente um elemento HTML.
-                </span> </label> <label class="alternativa-quiz"> <input type="radio" name="resposta-quiz" value="d">
-                <span> D) Criar uma variável no JavaScript. </span> </label> </div>
-    </article>
-    <div class="grupo-botoes"> <button type="button" id="pergunta-anterior-btn" class="botao-secundario"> Anterior
-        </button> <button type="button" id="avancar-pergunta-btn" class="botao-principal"> Avançar </button>
-    </div>
+        <!-- Barra da janela — Estrutura - identificar o aplicativo e reunir seus controles -->
+        <header class="janela-cabecalho">
 
-</section>
+            <div class="janela-identidade">
+                <span class="janela-icone" aria-hidden="true">CS</span>
 
-<!-- Etapa 5: Finalização -->
-<section id="finalizacao" class="etapa">
-    <h2 class="titulo-etapa">Bloco Concluído</h2>
-    <p class="descricao-etapa"> Seu bloco de estudo foi concluído. </p>
+                <div>
+                    <h2 id="janela-codestudy-titulo">CodeStudy</h2>
+                    <p>Seu bloco de estudos com IA</p>
+                </div>
+            </div>
 
-    <article id="resultado-quiz" class="card">
-        <h3>Resultado do Quiz</h3>
-        <p> Você acertou <strong id="quantidade-acertos">0</strong> de <strong id="total-perguntas">20</strong>
-            perguntas. </p>
-    </article>
+            <div class="janela-controles">
 
-    <article id="resumo-final" class="card">
-        <h3>Resumo do Bloco</h3>
-        <p> O resumo final do conteúdo estudado será apresentado aqui. </p>
-    </article>
+                <button
+                    type="button"
+                    id="minimizar-codestudy-btn"
+                    class="janela-controle"
+                    aria-label="Minimizar CodeStudy"
+                    aria-controls="janela-codestudy"
+                >
+                    &minus;
+                </button>
 
-    <div class="grupo-botoes"> <button type="button" id="salvar-bloco-btn" class="botao-principal"> Salvar Bloco
-        </button> <button type="button" id="salvar-pdf-btn" class="botao-secundario"> Salvar resumo em PDF </button>
-    </div>
+                <button
+                    type="button"
+                    id="fechar-codestudy-btn"
+                    class="janela-controle"
+                    aria-label="Fechar CodeStudy"
+                    aria-controls="janela-codestudy"
+                >
+                    &times;
+                </button>
 
-</section>
-</main>
+            </div>
 
-        <script src="./js/storage.js"></script>
-        <script src="./js/api.js"></script>
-        <script src="./js/quiz.js"></script>
-        <script src="./js/app.js"></script>
+        </header>
+
+        <!-- Conteúdo da janela — Estrutura - preservar as etapas existentes do CodeStudy -->
+        <div id="conteudo-janela-codestudy" class="janela-conteudo">
+
+            <!-- Progresso do estudo — Estrutura - identificar as cinco etapas do fluxo -->
+            <nav class="navegacao-etapas" aria-label="Etapas do bloco de estudos">
+                <ol class="lista-etapas">
+                    <li>Abertura</li>
+                    <li>Código</li>
+                    <li>Análise</li>
+                    <li>Quiz</li>
+                    <li>Finalização</li>
+                </ol>
+            </nav>
+
+            <!-- Conteúdo principal do CodeStudy -->
+            <main class="conteudo-principal">
+
+                <!-- Etapa 1: Abrir Bloco -->
+                <section id="abrir-bloco" class="etapa">
+
+                    <h2 class="titulo-etapa">Abrir Bloco</h2>
+
+                    <p class="descricao-etapa">
+                        Informe o que você está estudando para iniciar um novo bloco.
+                    </p>
+
+                    <form id="formulario-bloco" class="formulario">
+
+                        <div class="campo-formulario">
+                            <label for="titulo-trecho">
+                                Qual trecho você está trabalhando?
+                            </label>
+
+                            <input
+                                type="text"
+                                id="titulo-trecho"
+                                name="titulo-trecho"
+                                placeholder="Ex: Eventos de clique no JavaScript"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="linguagem">
+                                Qual linguagem você está trabalhando?
+                            </label>
+
+                            <select id="linguagem" name="linguagem" required>
+                                <option value="">Selecione uma linguagem</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="react">React</option>
+                                <option value="outra">Outra</option>
+                            </select>
+                        </div>
+
+                        <div class="grupo-botoes">
+                            <button
+                                type="button"
+                                id="continuar-btn"
+                                class="botao-principal"
+                            >
+                                Continuar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+                <!-- Etapa 2: Inserir Código -->
+                <section id="inserir-codigo" class="etapa">
+
+                    <h2 class="titulo-etapa">Inserir Código</h2>
+
+                    <div class="informacoes-bloco">
+                        <p>
+                            <strong>Trecho:</strong>
+                            <span id="titulo-trecho-exibicao">
+                                Eventos de clique no JavaScript
+                            </span>
+                        </p>
+
+                        <p>
+                            <strong>Linguagem:</strong>
+                            <span id="linguagem-exibicao">JavaScript</span>
+                        </p>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="codigo-input">Cole seu trecho de código:</label>
+
+                        <textarea
+                            id="codigo-input"
+                            name="codigo"
+                            rows="15"
+                            placeholder="Cole seu código aqui..."
+                        ></textarea>
+                    </div>
+
+                    <div class="grupo-botoes">
+                        <button
+                            type="button"
+                            id="voltar-inicio-btn"
+                            class="botao-secundario"
+                        >
+                            Voltar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="analisar-btn"
+                            class="botao-principal"
+                        >
+                            Analisar
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Etapa 3: Análise da IA -->
+                <section id="analise-ia" class="etapa">
+
+                    <h2 class="titulo-etapa">Análise do Código</h2>
+
+                    <p class="descricao-etapa">
+                        Veja o resumo e entenda a responsabilidade do código analisado.
+                    </p>
+
+                    <article id="resumo-ia" class="card">
+                        <h3>Resumo</h3>
+                        <p>
+                            O resumo gerado pela inteligência artificial será apresentado aqui.
+                        </p>
+                    </article>
+
+                    <article id="explicacao-ia" class="card">
+                        <h3>Explicação</h3>
+                        <p>
+                            A explicação detalhada sobre o funcionamento do código será apresentada aqui.
+                        </p>
+                    </article>
+
+                    <article id="fluxo-codigo" class="card">
+                        <h3>Fluxo e Responsabilidades</h3>
+                        <p>
+                            As principais responsabilidades e relações encontradas no código serão apresentadas aqui.
+                        </p>
+                    </article>
+
+                    <div class="grupo-botoes">
+                        <button
+                            type="button"
+                            id="voltar-codigo-btn"
+                            class="botao-secundario"
+                        >
+                            Voltar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="gerar-quiz-btn"
+                            class="botao-principal"
+                        >
+                            Gerar Quiz
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Etapa 4: Quiz -->
+                <section id="quiz" class="etapa">
+
+                    <h2 class="titulo-etapa">Quiz</h2>
+
+                    <p id="progresso-quiz" class="progresso-quiz">
+                        Pergunta 1 de 20
+                    </p>
+
+                    <article class="card quiz-card">
+
+                        <h3 id="pergunta-quiz">
+                            Qual é a responsabilidade do addEventListener no JavaScript?
+                        </h3>
+
+                        <div id="alternativas-quiz" class="lista-alternativas">
+
+                            <label class="alternativa-quiz">
+                                <input type="radio" name="resposta-quiz" value="a">
+                                <span>A) Alterar diretamente o conteúdo do HTML.</span>
+                            </label>
+
+                            <label class="alternativa-quiz">
+                                <input type="radio" name="resposta-quiz" value="b">
+                                <span>B) Escutar um evento que acontece em um elemento.</span>
+                            </label>
+
+                            <label class="alternativa-quiz">
+                                <input type="radio" name="resposta-quiz" value="c">
+                                <span>C) Criar automaticamente um elemento HTML.</span>
+                            </label>
+
+                            <label class="alternativa-quiz">
+                                <input type="radio" name="resposta-quiz" value="d">
+                                <span>D) Criar uma variável no JavaScript.</span>
+                            </label>
+
+                        </div>
+
+                    </article>
+
+                    <div class="grupo-botoes">
+                        <button
+                            type="button"
+                            id="pergunta-anterior-btn"
+                            class="botao-secundario"
+                        >
+                            Anterior
+                        </button>
+
+                        <button
+                            type="button"
+                            id="avancar-pergunta-btn"
+                            class="botao-principal"
+                        >
+                            Avançar
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Etapa 5: Finalização -->
+                <section id="finalizacao" class="etapa">
+
+                    <h2 class="titulo-etapa">Bloco Concluído</h2>
+
+                    <p class="descricao-etapa">
+                        Seu bloco de estudo foi concluído.
+                    </p>
+
+                    <article id="resultado-quiz" class="card">
+                        <h3>Resultado do Quiz</h3>
+
+                        <p>
+                            Você acertou
+                            <strong id="quantidade-acertos">0</strong>
+                            de
+                            <strong id="total-perguntas">20</strong>
+                            perguntas.
+                        </p>
+                    </article>
+
+                    <article id="resumo-final" class="card">
+                        <h3>Resumo do Bloco</h3>
+
+                        <p>
+                            O resumo final do conteúdo estudado será apresentado aqui.
+                        </p>
+                    </article>
+
+                    <div class="grupo-botoes">
+                        <button
+                            type="button"
+                            id="salvar-bloco-btn"
+                            class="botao-principal"
+                        >
+                            Salvar Bloco
+                        </button>
+
+                        <button
+                            type="button"
+                            id="salvar-pdf-btn"
+                            class="botao-secundario"
+                        >
+                            Salvar resumo em PDF
+                        </button>
+                    </div>
+
+                </section>
+
+            </main>
+
+            <!-- Navegação anterior — Estrutura - preservar o botão utilizado pelo JavaScript existente -->
+            <div class="janela-rodape">
+                <button
+                    type="button"
+                    id="voltar-pagina-btn"
+                    class="botao-terciario"
+                >
+                    Voltar Página
+                </button>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- CodeStudy minimizado — Estrutura - reservar botão para restaurar a janela -->
+    <button
+        type="button"
+        id="restaurar-codestudy-btn"
+        class="codestudy-minimizado"
+        aria-controls="janela-codestudy"
+        aria-label="Restaurar janela do CodeStudy"
+        hidden
+    >
+        <span class="minimizado-icone" aria-hidden="true">CS</span>
+
+        <span class="minimizado-informacoes">
+            <strong>CodeStudy</strong>
+            <small>Seu bloco de estudos</small>
+        </span>
+
+        <span class="minimizado-acao" aria-hidden="true">&#8599;</span>
+    </button>
+
+    <script src="./js/storage.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/quiz.js"></script>
+    <script src="./js/app.js"></script>
+
 </body>
 
 </html>
