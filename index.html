@@ -570,6 +570,59 @@
 
                 </section>
 
+                <!-- Consulta do bloco salvo — Estrutura - apresentar o estudo armazenado -->
+<section id="consulta-bloco" class="etapa" hidden>
+
+    <h2 class="titulo-etapa">Resumo do Bloco</h2>
+
+    <p class="descricao-etapa">
+        Consulte o código e a análise do seu estudo salvo.
+    </p>
+
+    <!-- Identificação do estudo — Estrutura - apresentar título e linguagem -->
+    <article class="card">
+        <h3 id="consulta-titulo">Título do bloco</h3>
+        <p id="consulta-linguagem">Linguagem</p>
+    </article>
+
+    <!-- Código salvo — Estrutura - apresentar o trecho anexado pelo aluno -->
+    <article class="card">
+        <h3>Código anexado</h3>
+        <pre><code id="consulta-codigo"></code></pre>
+    </article>
+
+    <!-- Análise salva — Estrutura - apresentar o conteúdo retornado pela IA -->
+    <article class="card">
+        <h3>Análise da IA</h3>
+
+        <h4>Resumo</h4>
+        <p id="consulta-resumo"></p>
+
+        <h4>Explicação</h4>
+        <p id="consulta-explicacao"></p>
+
+        <h4>Fluxo do código</h4>
+        <p id="consulta-fluxo"></p>
+    </article>
+
+    <!-- Questões salvas — Estrutura - reservar espaço para perguntas e correções -->
+    <article class="card">
+        <h3>Questões e correções</h3>
+    
+        <div id="consulta-questoes">
+            <p>Este bloco ainda não possui questões e correções registradas.</p>
+        </div>
+    </article>
+    
+    <!-- Retorno à aula — Estrutura - disponibilizar a saída da consulta -->
+    <div class="grupo-botoes">
+        <button type="button" id="fechar-consulta-btn" class="botao-secundario">
+            Voltar à aula
+        </button>
+    </div>
+    
+    </section>
+
             </div>
 
             <div class="janela-rodape">
