@@ -595,7 +595,7 @@ img {
 
 .janela-codestudy .lista-etapas li:first-child {
     background: #4b087b;
-    color: #e2e5e3;
+    color: #f9f9f9;
 }
 
 /* Etapas do estudo — Atualização - diferenciar os painéis do fundo da janela */
@@ -1137,9 +1137,11 @@ img {
     z-index: 1000;
 }
 
-    .lista-etapas li {
-        font-size: 10px;
-    }
+        /* Etapa concluída ou alcançada — Atualização - destacar o nome com o verde do CodeStudy */
+        .lista-etapas li.etapa-alcancada {
+            color: #39c64b;
+            font-weight: 700;
+        }
 
     .barra-abaixo-video {
         margin-top: 8px;
@@ -1217,10 +1219,11 @@ img {
         gap: 3px;
     }
 
-    .janela-codestudy .lista-etapas li {
-        font-size: 9px;
-        padding: 7px 2px;
-    }
+        /* Etapa alcançada — Atualização - aplicar o verde sobre a cor padrão da navegação */
+        .janela-codestudy .lista-etapas li.etapa-alcancada {
+            color: #39c64b;
+            font-weight: 700;
+        }
 }
 
 @media (max-width: 380px) {

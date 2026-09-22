@@ -4,8 +4,12 @@ const inserirCodigo = document.getElementById("inserir-codigo");
 const analiseIa = document.getElementById("analise-ia");
 const quiz = document.getElementById("quiz");
 const finalizacao = document.getElementById("finalizacao");
+
 // Etapa de consulta — Seleção - selecionar a tela de resumo do bloco salvo
 const consultaBloco = document.getElementById("consulta-bloco");
+
+// Indicadores do estudo — Seleção - selecionar os nomes das etapas da navegação
+const indicadoresEtapas = document.querySelectorAll("#lista-etapas-estudo li");
 
 // Elementos de abertura do bloco — Seleção - selecionar campos e botão para iniciar o bloco
 const tituloTrechoInput = document.getElementById("titulo-trecho");
@@ -83,6 +87,28 @@ function mostrarEtapa(etapaSelecionada) {
     consultaBloco.style.display = "none";
 
     etapaSelecionada.style.display = "block";
+
+    // Progresso do estudo — Processamento - identificar a etapa exibida
+    const etapasEstudo = [
+        abrirBloco,
+        inserirCodigo,
+        analiseIa,
+        quiz,
+        finalizacao
+    ];
+
+    const indiceEtapaAtual = etapasEstudo.indexOf(etapaSelecionada);
+
+    // Indicadores do estudo — Atualização - destacar as etapas até a etapa atual
+    indicadoresEtapas.forEach(function (indicador, indice) {
+
+        // Etapa alcançada — Condição - não destacar etapas durante a consulta de um bloco salvo
+        indicador.classList.toggle(
+            "etapa-alcancada",
+            indiceEtapaAtual !== -1 && indice <= indiceEtapaAtual
+        );
+
+    });
 
     window.scrollTo({
         top: 0,
