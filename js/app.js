@@ -36,6 +36,16 @@ const avancarPerguntaBtn = document.getElementById("avancar-pergunta-btn");
 const salvarBlocoBtn = document.getElementById("salvar-bloco-btn");
 const salvarPdfBtn = document.getElementById("salvar-pdf-btn");
 
+// Elementos da consulta — Seleção - selecionar os campos que apresentarão os dados do bloco salvo
+const consultaTitulo = document.getElementById("consulta-titulo");
+const consultaLinguagem = document.getElementById("consulta-linguagem");
+const consultaCodigo = document.getElementById("consulta-codigo");
+const consultaResumo = document.getElementById("consulta-resumo");
+const consultaExplicacao = document.getElementById("consulta-explicacao");
+const consultaFluxo = document.getElementById("consulta-fluxo");
+const consultaQuestoes = document.getElementById("consulta-questoes");
+const fecharConsultaBtn = document.getElementById("fechar-consulta-btn");
+
 // Voltar página — Escuta - identificar clique no botão
 voltarPaginabtn.addEventListener("click", function () {
 
