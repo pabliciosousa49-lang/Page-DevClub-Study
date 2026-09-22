@@ -4,6 +4,8 @@ const inserirCodigo = document.getElementById("inserir-codigo");
 const analiseIa = document.getElementById("analise-ia");
 const quiz = document.getElementById("quiz");
 const finalizacao = document.getElementById("finalizacao");
+// Etapa de consulta — Seleção - selecionar a tela de resumo do bloco salvo
+const consultaBloco = document.getElementById("consulta-bloco");
 
 // Elementos de abertura do bloco — Seleção - selecionar campos e botão para iniciar o bloco
 const tituloTrechoInput = document.getElementById("titulo-trecho");
@@ -68,6 +70,7 @@ function mostrarEtapa(etapaSelecionada) {
     analiseIa.style.display = "none";
     quiz.style.display = "none";
     finalizacao.style.display = "none";
+    consultaBloco.style.display = "none";
 
     etapaSelecionada.style.display = "block";
 
