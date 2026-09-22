@@ -8,20 +8,21 @@
     box-sizing: border-box;
 }
 
+/* Paleta CodeStudy — Atualização - aplicar as cores da identidade visual */
 :root {
-    --cor-fundo: #121212;
-    --cor-superficie: #1b1c1e;
-    --cor-card: #24252a;
-    --cor-borda: #34343b;
+    --cor-fundo: #121016;
+    --cor-superficie: #1b1425;
+    --cor-card: #261a35;
+    --cor-borda: #49305f;
 
-    --cor-principal: #8238ae;
-    --cor-principal-hover: #9d4fc7;
-    --cor-destaque: #a66ae1;
+    --cor-principal: #4b087b;
+    --cor-principal-hover: #68219a;
+    --cor-destaque: #39c64b;
 
     --cor-texto: #f8f8fa;
-    --cor-texto-secundario: #aaaab4;
+    --cor-texto-secundario: #bdb3c8;
 
-    --cor-sucesso: #39d353;
+    --cor-sucesso: #39c64b;
     --cor-erro: #ff5c6c;
 
     --raio-pequeno: 6px;
@@ -550,6 +551,86 @@ img {
     overscroll-behavior: contain;
 }
 
+/* Identidade da janela — Atualização - aplicar a paleta oficial do CodeStudy */
+.janela-codestudy {
+    background: #160d20;
+    border-color: #57238a;
+}
+
+/* Cabeçalho da janela — Atualização - destacar a identidade roxa */
+.janela-codestudy .janela-cabecalho {
+    background: #290b45;
+    border-bottom-color: #603087;
+}
+
+/* Informações do cabeçalho — Atualização - melhorar o contraste dos textos */
+.janela-codestudy .janela-identidade h2 {
+    color: #ffffff;
+}
+
+.janela-codestudy .janela-identidade p {
+    color: #c9b8d9;
+}
+
+/* Controles da janela — Atualização - harmonizar os botões do cabeçalho */
+.janela-codestudy .janela-controle {
+    background: #40185e;
+    color: #f8f8fa;
+}
+
+.janela-codestudy .janela-controle:hover {
+    background: #5b2581;
+}
+
+/* Conteúdo da janela — Atualização - aplicar fundo escuro à área de estudo */
+.janela-codestudy .janela-conteudo {
+    background: #160d20;
+}
+
+/* Navegação das etapas — Atualização - harmonizar os indicadores */
+.janela-codestudy .lista-etapas li {
+    background: #2d2039;
+    color: #d2c5dd;
+}
+
+.janela-codestudy .lista-etapas li:first-child {
+    background: #4b087b;
+    color: #e2e5e3;
+}
+
+/* Etapas do estudo — Atualização - diferenciar os painéis do fundo da janela */
+.janela-codestudy .etapa {
+    background: #20142c;
+    border-color: #49305f;
+}
+
+/* Cards do estudo — Atualização - aplicar contraste entre conteúdo e painel */
+.janela-codestudy .card {
+    background: #2a1c39;
+    border-color: #49305f;
+}
+
+/* Botão principal — Atualização - utilizar o roxo da identidade visual */
+.janela-codestudy .botao-principal {
+    background: #4b087b;
+    border-color: #71339e;
+    color: #ffffff;
+}
+
+.janela-codestudy .botao-principal:hover:not(:disabled) {
+    background: #68219a;
+}
+
+/* Botão secundário — Atualização - manter contraste com a interface */
+.janela-codestudy .botao-secundario {
+    background: #2b1a3a;
+    border-color: #604078;
+    color: #f8f8fa;
+}
+
+.janela-codestudy .botao-secundario:hover:not(:disabled) {
+    background: #3b2450;
+}
 
 /* ================================
    NAVEGAÇÃO DAS ETAPAS

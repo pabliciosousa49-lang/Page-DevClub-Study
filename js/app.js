@@ -90,6 +90,31 @@ function mostrarEtapa(etapaSelecionada) {
     });
 }
 
+// Consulta do estudo — Processamento - preparar os dados do bloco salvo para exibição
+function exibirResumoBloco(blocoSalvo) {
+
+    // Identificação do estudo — Atualização - apresentar título e linguagem do bloco
+    consultaTitulo.textContent = blocoSalvo.titulo;
+    consultaLinguagem.textContent = blocoSalvo.linguagem;
+
+    // Código do estudo — Atualização - apresentar o trecho anexado pelo aluno
+    consultaCodigo.textContent = blocoSalvo.codigo;
+
+    // Análise do estudo — Atualização - apresentar os dados retornados pela IA
+    consultaResumo.textContent = blocoSalvo.analise.resumo;
+    consultaExplicacao.textContent = blocoSalvo.analise.explicacao;
+    consultaFluxo.textContent = blocoSalvo.analise.fluxo;
+
+    // Questões do estudo — Condição - informar quando o bloco não possui questões registradas
+    if (!blocoSalvo.quiz || blocoSalvo.quiz.length === 0) {
+        consultaQuestoes.textContent =
+            "Este bloco ainda não possui questões e correções registradas.";
+    }
+
+    // Tela de consulta — Atualização - exibir o resumo do estudo selecionado
+    mostrarEtapa(consultaBloco);
+}
+
 // Estado inicial — Atualização - exibir a etapa de abertura ao iniciar a aplicação
 mostrarEtapa(abrirBloco);
 
