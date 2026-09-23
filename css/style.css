@@ -447,19 +447,20 @@ img {
    JANELA FLUTUANTE DO CODESTUDY
 ================================ */
 
-/* Janela flutuante — Atualização - dimensionar o painel proporcionalmente à tela */
+/* Janela CodeStudy — Ajuste - altura baseada no conteúdo */
 .janela-codestudy {
     position: fixed;
 
     top: 24px;
     right: 24px;
-    bottom: 24px;
 
     display: flex;
     flex-direction: column;
 
     width: min(40vw, 500px);
+
     height: auto;
+    max-height: calc(100vh - 48px);
 
     overflow: hidden;
 
@@ -543,8 +544,9 @@ img {
     font-size: 23px;
 }
 
+/* Conteúdo da janela — Ajuste - acompanhar altura do conteúdo */
 .janela-conteudo {
-    flex: 1;
+    flex: 0 1 auto;
     min-height: 0;
 
     overflow-y: auto;
@@ -593,9 +595,9 @@ img {
     color: #d2c5dd;
 }
 
-.janela-codestudy .lista-etapas li:first-child {
-    background: #4b087b;
-    color: #f9f9f9;
+.lista-etapas li:first-child {
+    background: #57316e;
+    color: #ffffff;
 }
 
 /* Etapas do estudo — Atualização - diferenciar os painéis do fundo da janela */
@@ -644,7 +646,7 @@ img {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 5px;
-
+    margin-top: 12px;
     list-style: none;
 }
 
@@ -665,6 +667,12 @@ img {
     color: #ffffff;
 }
 
+/* Indicador atual — Atualização - destacar em verde somente a etapa exibida */
+.janela-codestudy .lista-etapas li.etapa-atual {
+    background: var(--cor-destaque);
+    color: #ffffff;
+    font-weight: 700;
+}
 
 /* ================================
    CONTEÚDO DO CODESTUDY
@@ -1014,8 +1022,9 @@ img {
    RODAPÉ DA JANELA
 ================================ */
 
+/* Rodapé da janela — Atualização - reduzir o espaço abaixo do botão */
 .janela-rodape {
-    padding: 0 18px 18px;
+    padding: 0 18px 8px;
 }
 
 
@@ -1113,18 +1122,19 @@ img {
         grid-row: 2;
     }
 
-    /* Janela flutuante — Atualização - definir dimensões compactas e adaptáveis */
-/* Dimensões da janela — Atualização - tornar o painel de estudos mais compacto */
+    /* Janela flutuante — Atualização - limitar a altura e reduzir o espaço vazio */
 .janela-codestudy {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+
+    top: 24px;
+    right: 24px;
 
     display: flex;
     flex-direction: column;
 
-    width: min(400px, calc(100vw - 40px));
-    height: min(520px, calc(100dvh - 40px));
+    width: min(40vw, 500px);
+    height: fit-content;
+    max-height: calc(100dvh - 48px);
 
     overflow: hidden;
 

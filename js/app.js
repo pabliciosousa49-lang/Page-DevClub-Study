@@ -99,13 +99,13 @@ function mostrarEtapa(etapaSelecionada) {
 
     const indiceEtapaAtual = etapasEstudo.indexOf(etapaSelecionada);
 
-    // Indicadores do estudo — Atualização - destacar as etapas até a etapa atual
+    // Indicadores do estudo — Atualização - destacar somente a etapa atual
     indicadoresEtapas.forEach(function (indicador, indice) {
 
-        // Etapa alcançada — Condição - não destacar etapas durante a consulta de um bloco salvo
+        // Etapa atual — Condição - destacar apenas o indicador correspondente à etapa exibida
         indicador.classList.toggle(
-            "etapa-alcancada",
-            indiceEtapaAtual !== -1 && indice <= indiceEtapaAtual
+            "etapa-atual",
+            indice === indiceEtapaAtual
         );
 
     });
