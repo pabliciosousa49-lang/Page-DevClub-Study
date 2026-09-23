@@ -144,7 +144,7 @@ git clone URL_DO_SEU_REPOSITORIO
 cd CodeStudy
 ```
 
-Substitua `URL_DO_SEU_REPOSITORIO` pelo endereço real do projeto no GitHub.
+Substitua `https://pabliciosousa49-lang.github.io/Page-DevClub-Study/` pelo endereço real do projeto no GitHub.
 
 ### 2. Instale as dependências
 
