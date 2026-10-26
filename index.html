@@ -311,6 +311,9 @@
                             >
                                 Continuar
                             </button>
+                            <button type="button" class="botao-terciario" data-pular-etapa="inserir-codigo">
+                                Pular etapa
+                            </button>
                         </div>
 
                     </form>
@@ -368,6 +371,9 @@
                         >
                             Analisar
                         </button>
+                        <button type="button" class="botao-terciario" data-pular-etapa="analise-ia">
+                            Pular etapa
+                        </button>
 
                     </div>
 
@@ -423,6 +429,9 @@
                         >
                             Gerar Quiz
                         </button>
+                        <button type="button" class="botao-terciario" data-pular-etapa="quiz">
+                            Pular etapa
+                        </button>
 
                     </div>
 
@@ -432,6 +441,10 @@
                 <section id="quiz" class="etapa">
 
                     <h2 class="titulo-etapa">Quiz</h2>
+
+                    <p id="quiz-vazio" class="descricao-etapa" hidden>
+                        Nenhum quiz foi gerado. Volte à análise para gerar as perguntas ou pule esta etapa.
+                    </p>
 
                     <p id="progresso-quiz" class="progresso-quiz">
                         Pergunta 1 de 20
@@ -511,6 +524,9 @@
                         >
                             Avançar
                         </button>
+                        <button type="button" class="botao-terciario" data-pular-etapa="finalizacao">
+                            Pular etapa
+                        </button>
 
                     </div>
 
@@ -520,6 +536,10 @@
                 <section id="finalizacao" class="etapa">
 
                     <h2 class="titulo-etapa">Bloco Concluído</h2>
+
+                    <p id="finalizacao-pulada" class="descricao-etapa" hidden>
+                        Você apenas navegou até esta etapa. Nenhum bloco foi concluído, salvo ou exportado por esta navegação.
+                    </p>
 
                     <p class="descricao-etapa">
                         Seu bloco de estudo foi concluído.

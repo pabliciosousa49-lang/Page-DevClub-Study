@@ -53,7 +53,11 @@ const fecharConsultaBtn = document.getElementById("fechar-consulta-btn");
 // Voltar página — Escuta - identificar clique no botão
 voltarPaginabtn.addEventListener("click", function () {
 
-    if (quiz.style.display === "block") {
+    if (finalizacao.style.display === "block") {
+        mostrarEtapa(quiz);
+    }
+
+    else if (quiz.style.display === "block") {
         mostrarEtapa(analiseIa);
     }
 
@@ -78,7 +82,7 @@ const bloco = {
 };
 
 // Controle de etapas — Atualização - controlar qual etapa da aplicação fica visível
-function mostrarEtapa(etapaSelecionada) {
+function mostrarEtapa(etapaSelecionada, apenasNavegacao = false) {
     abrirBloco.style.display = "none";
     inserirCodigo.style.display = "none";
     analiseIa.style.display = "none";
@@ -87,6 +91,22 @@ function mostrarEtapa(etapaSelecionada) {
     consultaBloco.style.display = "none";
 
     etapaSelecionada.style.display = "block";
+
+    // Quiz sem dados — Atualização - ocultar a questão de demonstração e seus controles.
+    const quizVazio = bloco.quiz.length === 0;
+    document.getElementById("quiz-vazio").hidden = !quizVazio;
+    quiz.querySelector(".quiz-card").hidden = quizVazio;
+    progressoQuiz.hidden = quizVazio;
+    perguntaAnteriorBtn.hidden = quizVazio;
+    avancarPerguntaBtn.hidden = quizVazio;
+
+    // Finalização — Atualização - distinguir uma visita da conclusão pelo fluxo original.
+    if (etapaSelecionada === finalizacao) {
+        document.getElementById("finalizacao-pulada").hidden = !apenasNavegacao;
+        finalizacao.querySelector(".titulo-etapa").hidden = apenasNavegacao;
+        finalizacao.querySelector("p.descricao-etapa:not(#finalizacao-pulada)").hidden = apenasNavegacao;
+        document.getElementById("resultado-quiz").hidden = apenasNavegacao;
+    }
 
     // Progresso do estudo — Processamento - identificar a etapa exibida
     const etapasEstudo = [
@@ -115,6 +135,23 @@ function mostrarEtapa(etapaSelecionada) {
         behavior: "smooth"
     });
 }
+
+// Navegação independente — Escuta - avançar sem acionar IA, respostas ou salvamento.
+document.querySelectorAll("[data-pular-etapa]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+        // Rascunho do estudo — Atualização - preservar os dados sem validar nem limpar campos.
+        bloco.titulo = tituloTrechoInput.value.trim();
+        bloco.linguagem = linguagemSelect.value;
+        bloco.codigo = codigoInput.value.trim();
+        tituloTrechoExibicao.textContent = bloco.titulo || "Ainda não informado";
+        linguagemExibicao.textContent = bloco.linguagem
+            ? linguagemSelect.options[linguagemSelect.selectedIndex].text
+            : "Ainda não informada";
+
+        const proximaEtapa = document.getElementById(botao.dataset.pularEtapa);
+        mostrarEtapa(proximaEtapa, true);
+    });
+});
 
 // Consulta do estudo — Processamento - preparar os dados do bloco salvo para exibição
 function exibirResumoBloco(blocoSalvo) {
